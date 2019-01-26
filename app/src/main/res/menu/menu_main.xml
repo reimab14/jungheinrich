@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.michael.jungheinrichv2.TabActivity">
+
+    <item
+        android:id="@+id/balken"
+        android:orderInCategory="100"
+        android:title="Balkendiagramm" />
+    <item
+        android:id="@+id/kreis"
+        android:orderInCategory="100"
+        android:title="Kreisdiagramm" />
+
+</menu>

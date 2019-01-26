@@ -1,0 +1,124 @@
+package com.example.michael.jungheinrichv2;
+
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
+
+import java.util.ArrayList;
+
+public class TabPieChart extends Fragment {
+
+    private static String TAG = "Tab1";
+
+    private float[] yData = {25.3f, 10.6f, 66.76f, 44.32f, 46.01f, 16.89f, 23.9f};
+    private String[] xData = {"Mitch","Jessica","Mohammed","Kelsey","Sam","Robert","Ashley"};
+    PieChart pieChart;
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.activity_piechart, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        Log.d(TAG, "onCreate: starting to create chart");
+
+        pieChart = (PieChart) getView().findViewById(R.id.idPieChart);
+
+
+        pieChart.setRotationEnabled(false);
+        pieChart.setHoleRadius(25f);
+        pieChart.setTransparentCircleAlpha(0);
+        pieChart.setCenterText("Jungheinrich Chart");
+        pieChart.setCenterTextSize(10);
+        //pieChart.setDrawEntryLabels(true);
+
+        addDataSet();
+
+        pieChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
+            @Override
+            public void onValueSelected(Entry e, Highlight h) {
+                Log.d(TAG, "onValueSelected: Value select from chart.");
+                Log.d(TAG, "onValueSelected: "+e.toString());
+                Log.d(TAG, "onValueSelected: "+h.toString());
+
+                int pos1 = e.toString().indexOf("y: ");
+                String sales = e.toString().substring(pos1 + 3);
+
+                for(int i=0; i<yData.length; i++)
+                {
+                    if(yData[i] == Float.parseFloat(sales))
+                    {
+                        pos1 = i;
+                        break;
+                    }
+                }
+                String employee = xData[pos1];
+                Toast.makeText(getActivity(),"Employee "+employee+"\n"+"Sales: $"+sales+"K", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onNothingSelected() {
+
+            }
+        });
+    }
+
+    private void addDataSet() {
+        Log.d(TAG, "addDataSet started");
+        ArrayList<PieEntry> yEntrys = new ArrayList<>();
+        ArrayList<String> xEntrys = new ArrayList<>();
+
+        for(int i=0; i<yData.length; i++)
+        {
+            yEntrys.add(new PieEntry(yData[i],i));
+        }
+
+        for(int i=0; i<xData.length; i++)
+        {
+            xEntrys.add(xData[i]);
+        }
+
+        PieDataSet pieDataSet = new PieDataSet(yEntrys, "Employee Sales");
+        pieDataSet.setSliceSpace(2);
+        pieDataSet.setValueTextSize(12);
+
+        ArrayList<Integer> colors = new ArrayList<>();
+        colors.add(Color.GRAY);
+        colors.add(Color.BLUE);
+        colors.add(Color.RED);
+        colors.add(Color.GREEN);
+        colors.add(Color.CYAN);
+        colors.add(Color.YELLOW);
+        colors.add(Color.MAGENTA);
+
+        pieDataSet.setColors(colors);
+
+        Legend legend = pieChart.getLegend();
+        legend.setForm(Legend.LegendForm.CIRCLE);
+        legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
+
+        PieData pieData = new PieData(pieDataSet);
+        pieChart.setData(pieData);
+        pieChart.invalidate();
+    }
+}

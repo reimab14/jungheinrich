@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/tab2_content"
+    android:background="@android:color/white">
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:id="@+id/bargraph"></com.github.mikephil.charting.charts.BarChart>
+
+</android.support.constraint.ConstraintLayout>
