@@ -12,7 +12,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class TableClient  extends Thread {
-
+    //TableClient Class
     private ObjectInputStream in;
     private ObjectOutputStream out;
 
