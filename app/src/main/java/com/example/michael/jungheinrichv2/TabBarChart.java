@@ -20,7 +20,7 @@ import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import java.util.ArrayList;
 
 public class TabBarChart  extends Fragment {
-
+    //Dieser Kommentar soll gespusht werden
     BarChart barChart;
 
     @Nullable
