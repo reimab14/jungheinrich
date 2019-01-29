@@ -63,7 +63,7 @@ public class ReportClient extends Thread {
             //socket = new Socket("0.0.0.0",PORTNR);
             //System.out.println(socket.getInetAddress());
             //10.0.2.2
-            socket = new Socket("10.151.83.70", PORTNR);
+            socket = new Socket("10.151.87.30", PORTNR);
             System.out.println(socket.getInetAddress());
             OutputStream os = socket.getOutputStream();
             out = new ObjectOutputStream(os);
