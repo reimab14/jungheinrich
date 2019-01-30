@@ -72,7 +72,7 @@ public class SQLParser
 
 
 
-                for(int i = 1; i < count; i++)
+             /*   for(int i = 1; i < count; i++)
                 {
                     String s = replace[i];
 
@@ -91,7 +91,7 @@ public class SQLParser
                     String krit = s.substring(6,index);
                 krits.add(krit);
                 System.out.println(krit);
-            }
+            }*/
 
 
            return true;
@@ -108,15 +108,24 @@ public class SQLParser
         statement  = statement.replace("/* U ", "§");
         String[] s = statement.split("§");
 
+        int index = 1;
+
         for(int j = 1; j < s.length; j++)
         {
             for(int i = 0; i < s[j].length(); i++)
             {
                 if(s[j].charAt(i) == ' ')
                 {
-                    filters.add(s[j].substring(0,i));
-                    i = s[j].length();
+                    if(filters.contains(s[j].substring(0,i))) {
 
+                        filters.add(s[j].substring(0, i) + index);
+                        index++;
+                        i = s[j].length();
+                    }
+                    else {
+                        filters.add(s[j].substring(0,i));
+                        i = s[j].length();
+                    }
                 }
             }
         }
@@ -150,7 +159,7 @@ public class SQLParser
                 "OR        name_vpe4 = ??? /* U VPE */ \n" +
                 "OR        name_vpe5 = ??? /* U VPE */");
 
-       // obj.getFilters(obj.statement);
+       obj.krits = obj.getFilters(obj.statement);
 
         if(obj.parseStatement())
         {
