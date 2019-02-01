@@ -116,11 +116,9 @@ public class SQLParser
             {
                 if(s[j].charAt(i) == ' ')
                 {
-                    if(filters.contains(s[j].substring(0,i))) {
-
-                        filters.add(s[j].substring(0, i) + index);
-                        index++;
-                        i = s[j].length();
+                    if(filters.contains(s[j].substring(0,i)))
+                    {
+                        break;
                     }
                     else {
                         filters.add(s[j].substring(0,i));
