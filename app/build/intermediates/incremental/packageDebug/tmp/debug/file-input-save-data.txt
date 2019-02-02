@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sat Feb 02 11:10:16 CET 2019
+#Sat Feb 02 11:13:24 CET 2019
 0.baseType=DIRECTORY
 0.base=C\:\\Users\\Sebastian Legat\\Downloads\\jungheinrich\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 0.path=classes.dex
