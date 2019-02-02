@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
             StrictMode.setThreadPolicy(policy);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         list = new LinkedList<>();
         lview = findViewById(R.id.ListView);
 

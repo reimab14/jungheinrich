@@ -1,19 +1,4 @@
-#Mon Oct 08 08:35:52 CEST 2018
-path.1=classes.dex
+#Sat Feb 02 11:10:16 CET 2019
+base.0=C\:\\Users\\Sebastian Legat\\Downloads\\jungheinrich\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 path.0=classes.dex
-renamed.5=classes6.dex
-renamed.4=classes5.dex
-renamed.3=classes4.dex
-renamed.2=classes3.dex
-renamed.1=classes2.dex
 renamed.0=classes.dex
-base.5=C\:\\Users\\Michael\\Documents\\4BHIF\\SYP\\Projekt\\Jungheinrichv2\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\35
-base.4=C\:\\Users\\Michael\\Documents\\4BHIF\\SYP\\Projekt\\Jungheinrichv2\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\33
-base.3=C\:\\Users\\Michael\\Documents\\4BHIF\\SYP\\Projekt\\Jungheinrichv2\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\36
-base.2=C\:\\Users\\Michael\\Documents\\4BHIF\\SYP\\Projekt\\Jungheinrichv2\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\31
-base.1=C\:\\Users\\Michael\\Documents\\4BHIF\\SYP\\Projekt\\Jungheinrichv2\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\34
-base.0=C\:\\Users\\Michael\\Documents\\4BHIF\\SYP\\Projekt\\Jungheinrichv2\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\32
-path.5=classes.dex
-path.4=classes.dex
-path.3=classes.dex
-path.2=classes.dex
