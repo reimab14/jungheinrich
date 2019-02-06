@@ -12,6 +12,8 @@ import android.support.design.widget.TabLayout;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 
 public class TabActivity extends AppCompatActivity {
@@ -57,13 +59,40 @@ public class TabActivity extends AppCompatActivity {
         client.run();
         colNames = client.getColNames().split(";");
         content = client.getList();
-
+        LinkedList<Integer> cols = new LinkedList<>();
+        System.out.println("Größe: "+content.size());
+        for(int i=0; i<1; i++)
+        {
+            System.out.println("Data "+i+": ");
+            for(int j=0; j<content.get(i).size(); j++)
+            {
+                System.out.println(content.get(i).get(j));
+                String search = content.get(i).get(j).toString();
+                System.out.println("Zahl: "+search.matches("-?\\d+(\\.\\d+)?"));
+                if(search.matches("-?\\d+(\\.\\d+)?")) {
+                    cols.add(j);
+                }
+            }
+        }
+        System.out.println("Spalten:");
+        for(int a=0; a<cols.size(); a++)
+        {
+            System.out.println(content.get(0).get(a).toString()+": "+colNames[a].toString());
+        }
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        if(content.size()>1)
+        {
+            System.out.println("mehr als ein Eintrag!");
+            tabLayout.removeTabAt(1);
+        }
+        else {
+
+        }
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
