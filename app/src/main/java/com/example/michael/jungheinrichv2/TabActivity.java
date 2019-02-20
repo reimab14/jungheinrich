@@ -21,6 +21,7 @@ public class TabActivity extends AppCompatActivity {
     private TableClient client;
     private String[] colNames;
     private LinkedList<ArrayList<String>> content;
+    private ArrayList<Integer> numbers;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -59,26 +60,8 @@ public class TabActivity extends AppCompatActivity {
         client.run();
         colNames = client.getColNames().split(";");
         content = client.getList();
-        LinkedList<Integer> cols = new LinkedList<>();
+        numbers = new ArrayList<>();
         System.out.println("Größe: "+content.size());
-        for(int i=0; i<1; i++)
-        {
-            System.out.println("Data "+i+": ");
-            for(int j=0; j<content.get(i).size(); j++)
-            {
-                System.out.println(content.get(i).get(j));
-                String search = content.get(i).get(j).toString();
-                System.out.println("Zahl: "+search.matches("-?\\d+(\\.\\d+)?"));
-                if(search.matches("-?\\d+(\\.\\d+)?")) {
-                    cols.add(j);
-                }
-            }
-        }
-        System.out.println("Spalten:");
-        for(int a=0; a<cols.size(); a++)
-        {
-            System.out.println(content.get(0).get(a).toString()+": "+colNames[a].toString());
-        }
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
@@ -91,7 +74,22 @@ public class TabActivity extends AppCompatActivity {
             tabLayout.removeTabAt(1);
         }
         else {
+            System.out.println("Data: ");
+            for(int j=0; j<content.get(0).size(); j++)
+            {
+                System.out.println(content.get(0).get(j));
+                String search = content.get(0).get(j).toString();
+                System.out.println("Zahl: "+search.matches("-?\\d+(\\.\\d+)?"));
+                if(search.matches("-?\\d+(\\.\\d+)?")) {
+                    numbers.add(j);
+                }
+            }
 
+            System.out.println("Spalten:");
+            for(int a=0; a<numbers.size(); a++)
+            {
+                System.out.println(content.get(0).get(numbers.get(a)).toString()+": "+colNames[numbers.get(a)].toString());
+            }
         }
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -129,6 +127,8 @@ public class TabActivity extends AppCompatActivity {
             }
 
             b.putInt("ListSize", content.size());
+            b.putIntegerArrayList("Numbers", numbers);
+
 
             fragment.setArguments(b);
             return fragment;

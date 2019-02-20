@@ -22,6 +22,7 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class ChartSwitch  extends Fragment {
 
@@ -37,6 +38,9 @@ public class ChartSwitch  extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Fragment fragment = new TabBarChart();
+
+        fragment.setArguments(getArguments());
+
         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.tab2_content, fragment);
         ft.addToBackStack(null);
@@ -68,11 +72,13 @@ public class ChartSwitch  extends Fragment {
         if (id == R.id.balken) {
             Toast.makeText(getActivity(),"Balken", Toast.LENGTH_LONG).show();
             fragment = new TabBarChart();
+            fragment.setArguments(getArguments());
         }
 
         if(id == R.id.kreis){
             Toast.makeText(getActivity(),"Kreis", Toast.LENGTH_LONG).show();
             fragment = new TabPieChart();
+            fragment.setArguments(getArguments());
         }
         ft.replace(R.id.tab2_content, fragment);
         ft.addToBackStack(null);

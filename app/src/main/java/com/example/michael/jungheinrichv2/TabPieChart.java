@@ -21,13 +21,16 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class TabPieChart extends Fragment {
 
     private static String TAG = "Tab1";
-
-    private float[] yData = {25.3f, 10.6f, 66.76f, 44.32f, 46.01f, 16.89f, 23.9f};
-    private String[] xData = {"Mitch","Jessica","Mohammed","Kelsey","Sam","Robert","Ashley"};
+    private LinkedList<ArrayList<String>> content;
+    private String[] colNames;
+    private ArrayList<Integer> numbers;
+    private int[] yData;
+    private String[] xData;
     PieChart pieChart;
 
     @Nullable
@@ -43,6 +46,26 @@ public class TabPieChart extends Fragment {
         Log.d(TAG, "onCreate: starting to create chart");
 
         pieChart = (PieChart) getView().findViewById(R.id.idPieChart);
+
+        content = new LinkedList<>();
+        Bundle b = getArguments();
+
+        colNames = b.getStringArray("ColNames");
+
+        for(int i = 1; i <= (int) b.get("ListSize"); i++)
+        {
+            content.add(b.getStringArrayList("Record"+i));
+        }
+
+        numbers = b.getIntegerArrayList("Numbers");
+        yData = new int[numbers.size()];
+        xData = new String[numbers.size()];
+
+        for(int a=0; a<numbers.size(); a++)
+        {
+            yData[a] = Integer.parseInt(content.get(0).get(numbers.get(a)).toString());
+            xData[a] = colNames[numbers.get(a)].toString();
+        }
 
 
         pieChart.setRotationEnabled(false);
@@ -62,18 +85,18 @@ public class TabPieChart extends Fragment {
                 Log.d(TAG, "onValueSelected: "+h.toString());
 
                 int pos1 = e.toString().indexOf("y: ");
-                String sales = e.toString().substring(pos1 + 3);
+                String ammount = e.toString().substring(pos1 + 3);
 
                 for(int i=0; i<yData.length; i++)
                 {
-                    if(yData[i] == Float.parseFloat(sales))
+                    if(yData[i] == Double.parseDouble(ammount))
                     {
                         pos1 = i;
                         break;
                     }
                 }
-                String employee = xData[pos1];
-                Toast.makeText(getActivity(),"Employee "+employee+"\n"+"Sales: $"+sales+"K", Toast.LENGTH_LONG).show();
+                String clicked = xData[pos1];
+                Toast.makeText(getActivity(),clicked+" :"+ammount, Toast.LENGTH_LONG).show();
             }
 
             @Override

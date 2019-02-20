@@ -4,7 +4,7 @@
             "outputFile": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\b36c5d23497c864a132a98fad945e444\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\619e2a7bc02b67123e0ccfdbb7805d3e\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f7372815faada9be340b1d29a2a2c45d\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
