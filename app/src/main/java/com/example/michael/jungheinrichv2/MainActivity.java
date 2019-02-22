@@ -7,10 +7,13 @@ import android.net.NetworkInfo;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -27,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
         private ArrayAdapter<String> adapter;
         private LinkedList<String> list;
         private ListView lview;
+        private EditText search;
+        private String[] items;
+        private int length;
 
         private ReportClient client;
 
@@ -41,15 +47,40 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         list = new LinkedList<>();
         lview = findViewById(R.id.ListView);
+        search = findViewById(R.id.searchtxt);
 
         client = new ReportClient();
+
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                length = charSequence.toString().length();
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(charSequence.toString().equals("")) {
+                    initList();
+                }
+                else {
+                    search(charSequence.toString());
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.toString().length() < length) {
+                    initList();
+                    search(editable.toString());
+                }
+            }
+        });
 
 
             try {
                 //   access = new DBAccess();
                 //    list = access.getTables();
-                client.run();
-                list = client.getList();
+                initList();
 
             } catch (Exception ex) {
                 for (int i = 1; i <= 20; i++) {
@@ -69,15 +100,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-
-
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, list);
-
-
-
         try {
 
-            lview.setAdapter(adapter);
+            //lview.setAdapter(adapter);
             adapter.notifyDataSetChanged();
         }catch(Exception ex)
         {
@@ -96,6 +121,28 @@ public class MainActivity extends AppCompatActivity {
             });
 
 
+    }
+
+    public void initList() {
+            client.run();
+            list = client.getList();
+            items = new String[list.size()];
+            for(int i=0; i<list.size(); i++)
+            {
+                items[i] = list.get(i);
+            }
+            adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, list);
+            lview.setAdapter(adapter);
+    }
+
+    public void search(String searchtxt) {
+            for(String item : items) {
+                if(!item.toLowerCase().contains(searchtxt.toLowerCase())) {
+                    System.out.println(item+ " gelöscht!");
+                    list.remove(item);
+                }
+            }
+            adapter.notifyDataSetChanged();
     }
 
 
