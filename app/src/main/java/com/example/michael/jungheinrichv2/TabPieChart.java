@@ -10,9 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.LegendEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
@@ -22,6 +22,7 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 public class TabPieChart extends Fragment {
 
@@ -73,6 +74,7 @@ public class TabPieChart extends Fragment {
         pieChart.setTransparentCircleAlpha(0);
         pieChart.setCenterText("Jungheinrich Chart");
         pieChart.setCenterTextSize(10);
+        pieChart.getDescription().setEnabled(false);
         //pieChart.setDrawEntryLabels(true);
 
         addDataSet();
@@ -96,7 +98,7 @@ public class TabPieChart extends Fragment {
                     }
                 }
                 String clicked = xData[pos1];
-                Toast.makeText(getActivity(),clicked+" :"+ammount, Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(),clicked+": "+ammount, Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -121,7 +123,7 @@ public class TabPieChart extends Fragment {
             xEntrys.add(xData[i]);
         }
 
-        PieDataSet pieDataSet = new PieDataSet(yEntrys, "Employee Sales");
+        PieDataSet pieDataSet = new PieDataSet(yEntrys, "");
         pieDataSet.setSliceSpace(2);
         pieDataSet.setValueTextSize(12);
 
@@ -137,8 +139,18 @@ public class TabPieChart extends Fragment {
         pieDataSet.setColors(colors);
 
         Legend legend = pieChart.getLegend();
+        List<LegendEntry> legendEntries = new ArrayList<>();
+
+        for(int i=0; i<yEntrys.size(); i++)
+        {
+            LegendEntry legendEntry = new LegendEntry();
+            legendEntry.formColor = colors.get(i);
+            legendEntry.label = xEntrys.get(i);
+            legendEntries.add(legendEntry);
+        }
         legend.setForm(Legend.LegendForm.CIRCLE);
-        legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
+        legend.setPosition(Legend.LegendPosition.BELOW_CHART_CENTER);
+        legend.setCustom(legendEntries);
 
         PieData pieData = new PieData(pieDataSet);
         pieChart.setData(pieData);
