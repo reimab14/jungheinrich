@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.support.design.widget.TabLayout;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -46,6 +47,8 @@ public class TabActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -96,6 +99,14 @@ public class TabActivity extends AppCompatActivity {
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        ImageView logo = (ImageView) findViewById(R.id.logoJungheinrich);
+        int offset = (toolbar.getWidth() / 2) - (logo.getWidth() / 2);
+        logo.setX(offset);
     }
 
     /**

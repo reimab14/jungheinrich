@@ -779,6 +779,7 @@ drawable design_snackbar_background
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_settings
+drawable jungheinrich
 drawable navigation_empty_icon
 drawable notification_action_background
 drawable notification_bg
@@ -893,6 +894,7 @@ id line1
 id line3
 id listMode
 id list_item
+id logoJungheinrich
 id masked
 id media_actions
 id message
@@ -981,6 +983,7 @@ id title
 id titleDividerNoCustom
 id title_template
 id toolbar
+id toolbarstart
 id top
 id topPanel
 id touch_outside
