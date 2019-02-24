@@ -72,7 +72,7 @@ public class SQLParser
 
 
 
-                for(int i = 1; i < count; i++)
+             /*   for(int i = 1; i < count; i++)
                 {
                     String s = replace[i];
 
@@ -91,7 +91,7 @@ public class SQLParser
                     String krit = s.substring(6,index);
                 krits.add(krit);
                 System.out.println(krit);
-            }
+            }*/
 
 
            return true;
@@ -101,8 +101,48 @@ public class SQLParser
         }
     }
 
+    public LinkedList<String> getFilters(String statement)
+    {
+        LinkedList<String> filters = new LinkedList<>();
+
+        statement  = statement.replace("/* U ", "§");
+        String[] s = statement.split("§");
+
+        int index = 1;
+
+        for(int j = 1; j < s.length; j++)
+        {
+            for(int i = 0; i < s[j].length(); i++)
+            {
+                if(s[j].charAt(i) == ' ')
+                {
+                    if(filters.contains(s[j].substring(0,i)))
+                    {
+                        break;
+                    }
+                    else {
+                        filters.add(s[j].substring(0,i));
+                        i = s[j].length();
+                    }
+                }
+            }
+        }
+
+        System.out.println("Filter: ");
+        for(String str : filters)
+        {
+            System.out.println(str);
+        }
+
+        System.out.println();
+
+        return filters;
+    }
+
     public static void main(String [] args)
     {
+
+
         SQLParser obj = new SQLParser("SELECT   anr Anr /* TYP=ANR PRF=N ADDTEXT=N  */,\n" +
                 "         ktxt Beschreibung /* TYP=TEXT PRF=N ADDTEXT=N  */,\n" +
                 "         unit VPE1 /* TYP=BDT46 PRF=N ADDTEXT=N  */,\n" +
@@ -116,6 +156,9 @@ public class SQLParser
                 "OR        name_vpe3 = ??? /* U VPE */ \n" +
                 "OR        name_vpe4 = ??? /* U VPE */ \n" +
                 "OR        name_vpe5 = ??? /* U VPE */");
+
+       obj.krits = obj.getFilters(obj.statement);
+
         if(obj.parseStatement())
         {
             LinkedList<String> krits = obj.getKrits();
@@ -131,6 +174,8 @@ public class SQLParser
 
             System.out.println(obj.statement);
         }
+
+
 
     }
 }

@@ -67,7 +67,7 @@ public class TableClient  extends Thread {
     public synchronized void receiveStatement()
     {
         try {
-            socket = new Socket("192.168.43.66", PORTNR);
+            socket = new Socket("10.0.0.14", PORTNR);
             System.out.println(socket.getInetAddress());
             OutputStream os = socket.getOutputStream();
             out = new ObjectOutputStream(os);
@@ -108,7 +108,7 @@ public class TableClient  extends Thread {
     public synchronized void run() {
 
         try {
-            socket = new Socket("192.168.43.66", PORTNR);
+            socket = new Socket("10.0.0.14", PORTNR);
             System.out.println(socket.getInetAddress());
             OutputStream os = socket.getOutputStream();
             out = new ObjectOutputStream(os);

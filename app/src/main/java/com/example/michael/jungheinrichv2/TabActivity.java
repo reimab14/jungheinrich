@@ -12,6 +12,8 @@ import android.support.design.widget.TabLayout;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 
 public class TabActivity extends AppCompatActivity {
@@ -19,6 +21,7 @@ public class TabActivity extends AppCompatActivity {
     private TableClient client;
     private String[] colNames;
     private LinkedList<ArrayList<String>> content;
+    private ArrayList<Integer> numbers;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -57,13 +60,37 @@ public class TabActivity extends AppCompatActivity {
         client.run();
         colNames = client.getColNames().split(";");
         content = client.getList();
-
+        numbers = new ArrayList<>();
+        System.out.println("Größe: "+content.size());
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        if(content.size()>1)
+        {
+            System.out.println("mehr als ein Eintrag!");
+            tabLayout.removeTabAt(1);
+        }
+        else {
+            System.out.println("Data: ");
+            for(int j=0; j<content.get(0).size(); j++)
+            {
+                System.out.println(content.get(0).get(j));
+                String search = content.get(0).get(j).toString();
+                System.out.println("Zahl: "+search.matches("-?\\d+(\\.\\d+)?"));
+                if(search.matches("-?\\d+(\\.\\d+)?")) {
+                    numbers.add(j);
+                }
+            }
+
+            System.out.println("Spalten:");
+            for(int a=0; a<numbers.size(); a++)
+            {
+                System.out.println(content.get(0).get(numbers.get(a)).toString()+": "+colNames[numbers.get(a)].toString());
+            }
+        }
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
@@ -100,6 +127,8 @@ public class TabActivity extends AppCompatActivity {
             }
 
             b.putInt("ListSize", content.size());
+            b.putIntegerArrayList("Numbers", numbers);
+
 
             fragment.setArguments(b);
             return fragment;

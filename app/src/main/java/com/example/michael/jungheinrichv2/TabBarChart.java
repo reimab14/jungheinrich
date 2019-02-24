@@ -18,10 +18,14 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class TabBarChart  extends Fragment {
-    //Dieser Kommentar soll gespusht werden
+
     BarChart barChart;
+    private LinkedList<ArrayList<String>> content;
+    private String[] colNames;
+    private ArrayList<Integer> numbers;
 
     @Nullable
     @Override
@@ -34,12 +38,30 @@ public class TabBarChart  extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         barChart = (BarChart) getView().findViewById(R.id.bargraph);
         ArrayList<BarEntry> barEntries = new ArrayList<>();
-        barEntries.add(new BarEntry(0,44f));
+
+        content = new LinkedList<>();
+        Bundle b = getArguments();
+
+        colNames = b.getStringArray("ColNames");
+
+        for(int i = 1; i <= (int) b.get("ListSize"); i++)
+        {
+            content.add(b.getStringArrayList("Record"+i));
+        }
+
+        numbers = b.getIntegerArrayList("Numbers");
+
+        for(int a=0; a<numbers.size(); a++)
+        {
+            barEntries.add(new BarEntry(a, Integer.parseInt(content.get(0).get(numbers.get(a)).toString())));
+        }
+
+        /*barEntries.add(new BarEntry(0,44f));
         barEntries.add(new BarEntry(1,88f));
         barEntries.add(new BarEntry(2,66f));
         barEntries.add(new BarEntry(3,12f));
         barEntries.add(new BarEntry(4,19f));
-        barEntries.add(new BarEntry(5,91f));
+        barEntries.add(new BarEntry(5,91f));*/
         BarDataSet barDataSet = new BarDataSet(barEntries,"Dates");
 
         ArrayList<Integer> colors = new ArrayList<>();
@@ -53,12 +75,17 @@ public class TabBarChart  extends Fragment {
         barDataSet.setColors(colors);
 
         final ArrayList<String> theDates = new ArrayList<>();
-        theDates.add("April");
+
+        for(int a=0; a<numbers.size(); a++)
+        {
+            theDates.add(colNames[numbers.get(a)].toString());
+        }
+        /*theDates.add("April");
         theDates.add("May");
         theDates.add("June");
         theDates.add("July");
         theDates.add("August");
-        theDates.add("September");
+        theDates.add("September");*/
 
         BarData theData = new BarData(barDataSet);
         barChart.setData(theData);

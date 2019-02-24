@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Sebastian Legat\\Downloads\\jungheinrich\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-port\\values-port.xml",
+            "outputFile": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-port\\values-port.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Sebastian Legat\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\56b0f1514f246e81b90744551f54aeb1\\res\\values-port\\values-port.xml",
+                    "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\values-port\\values-port.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
