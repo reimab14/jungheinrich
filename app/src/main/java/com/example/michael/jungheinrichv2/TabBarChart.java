@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.LegendEntry;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
@@ -19,6 +21,7 @@ import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 public class TabBarChart  extends Fragment {
 
@@ -62,7 +65,7 @@ public class TabBarChart  extends Fragment {
         barEntries.add(new BarEntry(3,12f));
         barEntries.add(new BarEntry(4,19f));
         barEntries.add(new BarEntry(5,91f));*/
-        BarDataSet barDataSet = new BarDataSet(barEntries,"Dates");
+        BarDataSet barDataSet = new BarDataSet(barEntries,"");
 
         ArrayList<Integer> colors = new ArrayList<>();
         colors.add(Color.GRAY);
@@ -86,6 +89,20 @@ public class TabBarChart  extends Fragment {
         theDates.add("July");
         theDates.add("August");
         theDates.add("September");*/
+
+        Legend legend = barChart.getLegend();
+        List<LegendEntry> legendEntries = new ArrayList<>();
+
+        for(int i=0; i<barEntries.size(); i++)
+        {
+            LegendEntry legendEntry = new LegendEntry();
+            legendEntry.formColor = colors.get(i);
+            legendEntry.label = theDates.get(i);
+            legendEntries.add(legendEntry);
+        }
+        legend.setForm(Legend.LegendForm.CIRCLE);
+        legend.setPosition(Legend.LegendPosition.BELOW_CHART_CENTER);
+        legend.setCustom(legendEntries);
 
         BarData theData = new BarData(barDataSet);
         barChart.setData(theData);
