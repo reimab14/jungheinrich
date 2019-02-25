@@ -11,6 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarstart);
+        toolbar.setNavigationIcon(R.drawable.ic_logout);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
@@ -128,6 +131,26 @@ public class MainActivity extends AppCompatActivity {
             });
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_start, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id == android.R.id.home)
+        {
+            System.out.println("Logout!!");
+        }
+        else if(id == R.id.configuration)
+        {
+            System.out.println("ConfigFenster aufrufen!");
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

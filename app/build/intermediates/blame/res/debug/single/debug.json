@@ -40,6 +40,10 @@
         "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\drawable-mdpi-v4\\abc_scrubber_track_mtrl_alpha.9.png"
     },
     {
+        "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_logout.png.flat",
+        "source": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_logout.png"
+    },
+    {
         "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_settings.png.flat",
         "source": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_settings.png"
     },
@@ -252,12 +256,12 @@
         "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
     },
     {
-        "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_menu_hardkey_panel_mtrl_mult.9.png.flat",
-        "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\drawable-xxhdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png"
-    },
-    {
         "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_big_media_narrow_custom.xml.flat",
         "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-27.1.1.aar\\a4c95d8631fa5df78be1bcc0cd5cba68\\res\\layout\\notification_template_big_media_narrow_custom.xml"
+    },
+    {
+        "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_menu_hardkey_panel_mtrl_mult.9.png.flat",
+        "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\drawable-xxhdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png"
     },
     {
         "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_list_menu_item_checkbox.xml.flat",
@@ -488,24 +492,24 @@
         "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\drawable\\abc_vector_test.xml"
     },
     {
-        "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_btn_colored_borderless_text_material.xml.flat",
-        "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\color\\abc_btn_colored_borderless_text_material.xml"
-    },
-    {
         "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
         "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\drawable-xxxhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png"
     },
     {
-        "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_notification_action_background.xml.flat",
-        "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\76faf0882b2a946dd3122de511b50e29\\res\\drawable-v21\\notification_action_background.xml"
+        "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_btn_colored_borderless_text_material.xml.flat",
+        "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\color\\abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_textfield_default_mtrl_alpha.9.png.flat",
+        "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\drawable-xhdpi-v4\\abc_textfield_default_mtrl_alpha.9.png"
     },
     {
         "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\color_design_tint_password_toggle.xml.flat",
         "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\619e2a7bc02b67123e0ccfdbb7805d3e\\res\\color\\design_tint_password_toggle.xml"
     },
     {
-        "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_textfield_default_mtrl_alpha.9.png.flat",
-        "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\drawable-xhdpi-v4\\abc_textfield_default_mtrl_alpha.9.png"
+        "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_notification_action_background.xml.flat",
+        "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\76faf0882b2a946dd3122de511b50e29\\res\\drawable-v21\\notification_action_background.xml"
     },
     {
         "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
@@ -552,12 +556,12 @@
         "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
     },
     {
-        "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_action_mode_close_item_material.xml.flat",
-        "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\layout\\abc_action_mode_close_item_material.xml"
-    },
-    {
         "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_btn_default_mtrl_shape.xml.flat",
         "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\drawable\\abc_btn_default_mtrl_shape.xml"
+    },
+    {
+        "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_action_mode_close_item_material.xml.flat",
+        "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\layout\\abc_action_mode_close_item_material.xml"
     },
     {
         "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xxxhdpi-v17_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
@@ -606,6 +610,10 @@
     {
         "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_text_select_handle_right_mtrl_light.png.flat",
         "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\drawable-mdpi-v4\\abc_text_select_handle_right_mtrl_light.png"
+    },
+    {
+        "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\menu_menu_start.xml.flat",
+        "source": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\src\\main\\res\\menu\\menu_start.xml"
     },
     {
         "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_ic_go_search_api_material.xml.flat",
@@ -712,12 +720,20 @@
         "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\drawable-mdpi-v4\\abc_ic_star_half_black_48dp.png"
     },
     {
+        "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_configuration.png.flat",
+        "source": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_configuration.png"
+    },
+    {
         "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ic_star_half_black_48dp.png.flat",
         "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\drawable-xxhdpi-v4\\abc_ic_star_half_black_48dp.png"
     },
     {
         "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_scrubber_track_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\drawable-xhdpi-v4\\abc_scrubber_track_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_logout.png.flat",
+        "source": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_logout.png"
     },
     {
         "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_list_menu_item_layout.xml.flat",
@@ -754,6 +770,10 @@
     {
         "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
         "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\drawable-hdpi-v4\\abc_ic_menu_share_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_configuration.xml.flat",
+        "source": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_configuration.xml"
     },
     {
         "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_list_menu_item_radio.xml.flat",
@@ -956,6 +976,10 @@
         "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\anim\\abc_slide_out_top.xml"
     },
     {
+        "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_logout.png.flat",
+        "source": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_logout.png"
+    },
+    {
         "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_switch_track_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\drawable-xxxhdpi-v4\\abc_switch_track_mtrl_alpha.9.png"
     },
@@ -1060,6 +1084,10 @@
         "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\619e2a7bc02b67123e0ccfdbb7805d3e\\res\\drawable-v21\\design_bottom_navigation_item_background.xml"
     },
     {
+        "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_configuration.png.flat",
+        "source": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_configuration.png"
+    },
+    {
         "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
         "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\drawable-xxhdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
     },
@@ -1122,6 +1150,10 @@
     {
         "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_table.xml.flat",
         "source": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\src\\main\\res\\layout\\activity_table.xml"
+    },
+    {
+        "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_configuration.png.flat",
+        "source": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_configuration.png"
     },
     {
         "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_text_select_handle_right_mtrl_dark.png.flat",
@@ -1212,8 +1244,16 @@
         "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\drawable-hdpi-v4\\abc_list_longpressed_holo.9.png"
     },
     {
+        "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_logout.png.flat",
+        "source": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_logout.png"
+    },
+    {
         "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\layout_select_dialog_singlechoice_material.xml.flat",
         "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\layout\\select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_configuration.png.flat",
+        "source": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_configuration.png"
     },
     {
         "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_notification_bg_low_pressed.9.png.flat",
@@ -1296,6 +1336,10 @@
         "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\76faf0882b2a946dd3122de511b50e29\\res\\layout-v16\\notification_template_custom_big.xml"
     },
     {
+        "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_configuration.png.flat",
+        "source": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_configuration.png"
+    },
+    {
         "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_list_pressed_holo_dark.9.png.flat",
         "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\drawable-mdpi-v4\\abc_list_pressed_holo_dark.9.png"
     },
@@ -1346,6 +1390,10 @@
     {
         "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable_design_bottom_navigation_item_background.xml.flat",
         "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\619e2a7bc02b67123e0ccfdbb7805d3e\\res\\drawable\\design_bottom_navigation_item_background.xml"
+    },
+    {
+        "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_logout.png.flat",
+        "source": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_logout.png"
     },
     {
         "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_list_selector_background_transition_holo_light.xml.flat",
@@ -1568,6 +1616,10 @@
         "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\drawable-xxhdpi-v4\\abc_ic_star_half_black_36dp.png"
     },
     {
+        "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_logout.png.flat",
+        "source": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_logout.png"
+    },
+    {
         "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_notification_bg_normal_pressed.9.png.flat",
         "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\76faf0882b2a946dd3122de511b50e29\\res\\drawable-mdpi-v4\\notification_bg_normal_pressed.9.png"
     },
@@ -1606,6 +1658,10 @@
     {
         "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_settings.png.flat",
         "source": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_settings.png"
+    },
+    {
+        "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_configuration.png.flat",
+        "source": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_configuration.png"
     },
     {
         "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_fade_in.xml.flat",
@@ -1650,6 +1706,10 @@
     {
         "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_textfield_search_default_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\drawable-xxhdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_logout.xml.flat",
+        "source": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_logout.xml"
     },
     {
         "merged": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",

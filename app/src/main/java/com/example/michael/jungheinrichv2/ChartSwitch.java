@@ -75,10 +75,14 @@ public class ChartSwitch  extends Fragment {
             fragment.setArguments(getArguments());
         }
 
-        if(id == R.id.kreis){
+        else if(id == R.id.kreis){
             Toast.makeText(getActivity(),"Kreis", Toast.LENGTH_LONG).show();
             fragment = new TabPieChart();
             fragment.setArguments(getArguments());
+        }
+
+        else {
+            return super.onOptionsItemSelected(item);
         }
         ft.replace(R.id.tab2_content, fragment);
         ft.addToBackStack(null);
