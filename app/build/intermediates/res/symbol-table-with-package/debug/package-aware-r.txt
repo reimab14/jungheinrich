@@ -776,8 +776,10 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable ic_configuration
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable ic_logout
 drawable ic_settings
 drawable jungheinrich
 drawable navigation_empty_icon
@@ -846,6 +848,7 @@ id chronometer
 id clip_horizontal
 id clip_vertical
 id collapseActionView
+id configuration
 id container
 id contentPanel
 id coordinator
@@ -1076,6 +1079,7 @@ layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 menu menu_main
+menu menu_start
 mipmap ic_launcher
 mipmap ic_launcher_round
 string abc_action_bar_home_description

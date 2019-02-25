@@ -13,6 +13,7 @@ import java.util.Scanner;
 
 public class TableClient  extends Thread {
     //TableClient Class
+    private String ip_address = "10.0.0.14";
     private ObjectInputStream in;
     private ObjectOutputStream out;
 
@@ -67,7 +68,7 @@ public class TableClient  extends Thread {
     public synchronized void receiveStatement()
     {
         try {
-            socket = new Socket("10.0.0.14", PORTNR);
+            socket = new Socket(ip_address, PORTNR);
             System.out.println(socket.getInetAddress());
             OutputStream os = socket.getOutputStream();
             out = new ObjectOutputStream(os);
@@ -108,7 +109,7 @@ public class TableClient  extends Thread {
     public synchronized void run() {
 
         try {
-            socket = new Socket("10.0.0.14", PORTNR);
+            socket = new Socket(ip_address, PORTNR);
             System.out.println(socket.getInetAddress());
             OutputStream os = socket.getOutputStream();
             out = new ObjectOutputStream(os);
