@@ -7,6 +7,7 @@ import android.net.NetworkInfo;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -45,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
             StrictMode.setThreadPolicy(policy);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarstart);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         list = new LinkedList<>();
         lview = findViewById(R.id.ListView);
@@ -122,6 +128,14 @@ public class MainActivity extends AppCompatActivity {
             });
 
 
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarstart);
+        ImageView logo = (ImageView) findViewById(R.id.logoJungheinrich);
+        int offset = (toolbar.getWidth() / 2) - (logo.getWidth() / 2);
+        logo.setX(offset);
     }
 
     public void initList() {
