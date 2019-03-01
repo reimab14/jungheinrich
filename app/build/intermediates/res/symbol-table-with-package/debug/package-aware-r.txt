@@ -837,6 +837,8 @@ id barrier
 id beginning
 id blocking
 id bottom
+id button
+id button1
 id buttonPanel
 id cancel_action
 id center
@@ -864,6 +866,11 @@ id design_navigation_view
 id dimensions
 id direct
 id disableHome
+id editBenutzer
+id editHostname
+id editPasswort
+id editPort
+id editText
 id edit_query
 id end
 id end_padder
@@ -978,6 +985,11 @@ id text
 id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
+id textView
+id textView2
+id textView3
+id textView4
+id textView5
 id text_input_password_toggle
 id textinput_counter
 id textinput_error
@@ -1041,6 +1053,8 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_barchart
+layout activity_konfig
+layout activity_login2
 layout activity_main
 layout activity_piechart
 layout activity_tab

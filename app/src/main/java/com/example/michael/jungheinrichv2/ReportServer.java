@@ -106,9 +106,10 @@ public class ReportServer {
                 is = socket.getInputStream();
                 ObjectInputStream in = new ObjectInputStream(is);
                 String s = (String) in.readObject();
-                if(s.equals("report")) {
+                System.out.println(s);
+                if(s.contains("report")) {
                     System.out.println("s equals report");
-                    data = access.Execute("beschreibung");
+                    data = access.ExecuteReport("beschreibung", s.split(";")[1]);
                     OutputStream os = socket.getOutputStream();
                     ObjectOutputStream out = new ObjectOutputStream(os);
                     out.writeObject(data);
@@ -179,7 +180,7 @@ public class ReportServer {
               //  System.out.println(cmd);
                 Statement stmt = con.createStatement();
                 ResultSet rs = stmt.executeQuery(cmd);
-              //  System.out.println("Statemet abgerufen");
+              //  System.out.println("Statement abgerufen");
 
               //  System.out.println("Neues resultset geladen "+rs.toString());
                 ResultSetMetaData metaData = rs.getMetaData();
@@ -258,7 +259,7 @@ public class ReportServer {
             return data;
         }
 
-        public String Execute(String col)
+        public String ExecuteReport(String col, String persNr)
         {
             String data = "";
             System.out.println("Set Table Names");
@@ -266,7 +267,11 @@ public class ReportServer {
                 Class.forName(db_driver);
 
                 con = DriverManager.getConnection(db_url, db_username, db_password);
-                String cmd = "SELECT "+col+" FROM report";
+                System.out.println(""+col);
+                System.out.println(""+persNr);
+                String cmd = "SELECT r."+col+" FROM report r INNER JOIN reportbenutzergruppe rbg ON r.querynr = rbg.querynr INNER JOIN personal p ON rbg.benutzergrp = p.benutzergrp " +
+                        "WHERE p.persnr = "+persNr;
+                //String cmd = "SELECT "+col+" FROM report";
                 Statement stmt = con.createStatement();
                 ResultSet rs = stmt.executeQuery(cmd);
                 ResultSetMetaData meta = rs.getMetaData();

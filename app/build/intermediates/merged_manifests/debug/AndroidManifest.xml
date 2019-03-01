@@ -21,7 +21,13 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme.NoActionBar" >
+        <activity android:name="com.example.michael.jungheinrichv2.KonfigActivity" />
         <activity android:name="com.example.michael.jungheinrichv2.MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.example.michael.jungheinrichv2.LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

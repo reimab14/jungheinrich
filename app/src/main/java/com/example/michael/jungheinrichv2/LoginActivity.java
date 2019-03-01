@@ -36,15 +36,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         EditText et = findViewById(R.id.editText);
         String persNr = et.getText().toString();
-        for (int i = 0; i<IDs.size(); i++) {
-            if (persNr.equals(IDs.get(i))) {
+
 
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                Bundle b = new Bundle();
+                b.putString("PersNr", persNr);
+                intent.putExtra("PersNr", persNr);
                 startActivity(intent);
-                break;
-            } else {
-                Toast.makeText(getApplicationContext(),"Ungültige Personalnummer", Toast.LENGTH_LONG).show();
-            }
-        }
+
+
     }
 }

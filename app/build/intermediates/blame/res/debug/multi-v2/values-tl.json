@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-tl\\values-tl.xml",
+            "outputFile": "C:\\Users\\Sebastian Legat\\Downloads\\jungheinrich\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-tl\\values-tl.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\c814c43206528c38a21881d2bcc710b1\\res\\values-tl\\values-tl.xml",
+                    "source": "C:\\Users\\Sebastian Legat\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\88b14eadc73208d337cd931661704507\\res\\values-tl\\values-tl.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\76faf0882b2a946dd3122de511b50e29\\res\\values-tl\\values-tl.xml",
+                    "source": "C:\\Users\\Sebastian Legat\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\5f2e471c0470529b6584fa55ef970326\\res\\values-tl\\values-tl.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

@@ -141,8 +141,6 @@ public class TabActivity extends AppCompatActivity {
 
             b.putInt("ListSize", content.size());
             b.putIntegerArrayList("Numbers", numbers);
-
-
             fragment.setArguments(b);
             return fragment;
         }

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         private EditText search;
         private String[] items;
         private int length;
+        public static String persNr = "";
 
         private ReportClient client;
 
@@ -54,6 +56,13 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setNavigationIcon(R.drawable.ic_logout);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        if(persNr.equals(""))
+        {
+            Bundle b = getIntent().getExtras();
+            persNr = b.getString("PersNr");
+        }
+        System.out.println(persNr);
 
         list = new LinkedList<>();
         lview = findViewById(R.id.ListView);
@@ -124,8 +133,10 @@ public class MainActivity extends AppCompatActivity {
                  public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
               Intent intent = new Intent(MainActivity.this, TabActivity.class);
               Bundle b = new Bundle();
+                     System.out.println((String)parent.getItemAtPosition(position));
               b.putString("Report", (String)parent.getItemAtPosition(position));
               intent.putExtra("Report", (String)parent.getItemAtPosition(position));
+
               startActivity(intent);
             }
             });
@@ -144,11 +155,14 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         if(id == android.R.id.home)
         {
-            System.out.println("Logout!!");
+            persNr = "";
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
         }
         else if(id == R.id.configuration)
         {
-            System.out.println("ConfigFenster aufrufen!");
+            Intent intent = new Intent(MainActivity.this, KonfigActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
