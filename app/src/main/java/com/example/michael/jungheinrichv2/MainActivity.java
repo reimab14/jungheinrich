@@ -28,6 +28,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,8 +40,11 @@ public class MainActivity extends AppCompatActivity {
         private String[] items;
         private int length;
         public static String persNr = "";
+        public static boolean hasChanged = false;
+        public static ArrayList<String> dbdata = new ArrayList<>();
 
         private ReportClient client;
+        private KonfigClient confclient;
 
 
 
@@ -63,6 +67,18 @@ public class MainActivity extends AppCompatActivity {
             persNr = b.getString("PersNr");
         }
         System.out.println(persNr);
+
+        if(dbdata.size() > 0 && hasChanged == true)
+        {
+            System.out.println("changed aufgerufen!");
+            System.out.println(dbdata.size());
+            for(String s : dbdata)
+            {
+                System.out.println(s);
+            }
+            confclient = new KonfigClient();
+            confclient.run();
+        }
 
         list = new LinkedList<>();
         lview = findViewById(R.id.ListView);

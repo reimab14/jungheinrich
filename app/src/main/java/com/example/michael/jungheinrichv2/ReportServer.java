@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -23,6 +24,7 @@ public class ReportServer {
     private ServerSocket server;
     private Socket client;
     private final int port = 8085;
+    private DBAccess access;
 
     public static void main(String[] args)
     {
@@ -84,14 +86,16 @@ public class ReportServer {
     class ClientCommunicationThread extends Thread
     {
         private Socket socket;
-        DBAccess access;
         String data;
         String colNames;
 
         public ClientCommunicationThread(Socket st)
         {
             socket = st;
-            access = new DBAccess();
+            if(access == null)
+            {
+                access = new DBAccess();
+            }
             System.out.println("ClientCommunicationThread gestartet");
         }
 
@@ -113,6 +117,17 @@ public class ReportServer {
                     OutputStream os = socket.getOutputStream();
                     ObjectOutputStream out = new ObjectOutputStream(os);
                     out.writeObject(data);
+                }
+                else if(s.contains("dbdata"))
+                {
+                    System.out.println("change dbdata");
+                    String benutzer = s.split(";")[1];
+                    String passwort = s.split(";")[2];
+                    String hostname = s.split(";")[3];
+                    String port = s.split(";")[4];
+                    String sid = s.split(";")[5];
+                    System.out.println(benutzer+";"+passwort+";"+hostname+";"+port+";"+sid);
+                    access = new DBAccess(benutzer, passwort, hostname, port, sid);
                 }
                 else if(s.contains("SELECT") && s.contains("FROM"))
                 {
@@ -151,15 +166,36 @@ public class ReportServer {
     class DBAccess
     {
         private String db_driver = "oracle.jdbc.driver.OracleDriver";
-        private String db_username = "reimab14";
-        private String db_password = "reimab14";
-        private String db_url = "jdbc:oracle:thin:@db2.htl-kaindorf.at:1521:orcl";
+        private String db_username = "";
+        private String db_password = "";
+        private String db_hostname = "";
+        private String db_port = "";
+        private String db_sid = "";
+        private String db_url = "";
         private Connection con;
         private String colNames = "";
 
         public DBAccess()
         {
+            System.out.println("Konstruktor Standard aufgerufen!");
+            this.db_username = "reimab14";
+            this.db_password = "reimab14";
+            this.db_hostname = "db2.htl-kaindorf.at";
+            this.db_port = "1521";
+            this.db_sid = "orcl";
+            this.db_url = "jdbc:oracle:thin:@"+db_hostname+":"+db_port+":"+db_sid;
+        }
 
+        public DBAccess(String benutzer, String passwort, String hostname, String port, String sid)
+        {
+            System.out.println("Konstruktor aufgerufen!");
+            System.out.println(benutzer);
+            this.db_username = benutzer;
+            this.db_password = passwort;
+            this.db_hostname = hostname;
+            this.db_port = port;
+            this.db_sid = sid;
+            this.db_url = "jdbc:oracle:thin:@"+db_hostname+":"+db_port+":"+db_sid;
         }
 
         public String getColNames()
@@ -263,6 +299,8 @@ public class ReportServer {
         {
             String data = "";
             System.out.println("Set Table Names");
+            System.out.println(db_username+";"+db_password+";"+db_hostname+";"+db_port+";"+db_sid);
+            System.out.println(db_url);
             try {
                 Class.forName(db_driver);
 
@@ -280,6 +318,7 @@ public class ReportServer {
                 while(rs.next())
                 {
                     data += rs.getString(col)+";";
+                    System.out.println(rs.getString(col));
 
                 }
 

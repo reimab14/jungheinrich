@@ -870,6 +870,7 @@ id editBenutzer
 id editHostname
 id editPasswort
 id editPort
+id editSID
 id editText
 id edit_query
 id end
@@ -990,6 +991,7 @@ id textView2
 id textView3
 id textView4
 id textView5
+id textView6
 id text_input_password_toggle
 id textinput_counter
 id textinput_error

@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  */
 public class ReportClient extends Thread {
 
-    private String ip_address = "10.151.2.254";
+    private String ip_address = "10.0.0.14";
     private ObjectInputStream in;
     private ObjectOutputStream out;
 
@@ -66,10 +66,10 @@ public class ReportClient extends Thread {
             //10.0.2.2
             socket = new Socket(ip_address, PORTNR);
             System.out.println(socket.getInetAddress());
+
             OutputStream os = socket.getOutputStream();
             out = new ObjectOutputStream(os);
             out.writeObject(table+";"+MainActivity.persNr);
-
 
             InputStream is = socket.getInputStream();
             in = new ObjectInputStream(is);

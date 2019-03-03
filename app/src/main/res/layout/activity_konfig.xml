@@ -45,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             tools:layout_editor_absoluteX="46dp"
             tools:layout_editor_absoluteY="135dp" />
 
@@ -79,9 +79,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="number|textPersonName"
+            android:inputType="number|text"
             tools:layout_editor_absoluteX="45dp"
             tools:layout_editor_absoluteY="287dp" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SID"
+            tools:layout_editor_absoluteX="46dp"
+            tools:layout_editor_absoluteY="190dp" />
+
+        <EditText
+            android:id="@+id/editSID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="45dp"
+            tools:layout_editor_absoluteY="209dp" />
 
         <Button
             android:id="@+id/button"

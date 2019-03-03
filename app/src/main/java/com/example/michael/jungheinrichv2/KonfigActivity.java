@@ -7,35 +7,57 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+
 public class KonfigActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_konfig);
-        Button bt;
-        bt = findViewById(R.id.button);
+        EditText benutzer = findViewById(R.id.editBenutzer);
+        EditText passwort = findViewById(R.id.editPasswort);
+        EditText hostname = findViewById(R.id.editHostname);
+        EditText port = findViewById(R.id.editPort);
+        EditText sid = findViewById(R.id.editSID);
+        benutzer.setText(MainActivity.dbdata.get(0));
+        passwort.setText(MainActivity.dbdata.get(1));
+        hostname.setText(MainActivity.dbdata.get(2));
+        port.setText(MainActivity.dbdata.get(3));
+        sid.setText(MainActivity.dbdata.get(4));
+        Button bt = findViewById(R.id.button);
         bt.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        EditText et = findViewById(R.id.editBenutzer);
-        EditText et1 = findViewById(R.id.editPasswort);
-        EditText et2 = findViewById(R.id.editHostname);
-        EditText et3 = findViewById(R.id.editPort);
-        String benutzer = et.getText().toString();
-        String passwort = et1.getText().toString();
-        String hostname = et2.getText().toString();
-        String port = et3.getText().toString();
+        EditText benutzer = findViewById(R.id.editBenutzer);
+        EditText passwort = findViewById(R.id.editPasswort);
+        EditText hostname = findViewById(R.id.editHostname);
+        EditText port = findViewById(R.id.editPort);
+        EditText sid = findViewById(R.id.editSID);
+        if(!benutzer.getText().toString().equals(MainActivity.dbdata.get(0))) {
+            MainActivity.dbdata.set(0, benutzer.getText().toString());
+            MainActivity.hasChanged = true;
+        }
+        if(!passwort.getText().toString().equals(MainActivity.dbdata.get(1))) {
+            MainActivity.dbdata.set(1, passwort.getText().toString());
+            MainActivity.hasChanged = true;
+        }
+        if(!hostname.getText().toString().equals(MainActivity.dbdata.get(2))) {
+            MainActivity.dbdata.set(2, hostname.getText().toString());
+            MainActivity.hasChanged = true;
+        }
+        if(!port.getText().toString().equals(MainActivity.dbdata.get(3))) {
+            MainActivity.dbdata.set(3, port.getText().toString());
+            MainActivity.hasChanged = true;
+        }
+        if(!sid.getText().toString().equals(MainActivity.dbdata.get(4))) {
+            MainActivity.dbdata.set(4, sid.getText().toString());
+            MainActivity.hasChanged = true;
+        }
 
         Intent intent = new Intent(KonfigActivity.this, MainActivity.class);
-        Bundle b = new Bundle();
-
-
-
         startActivity(intent);
-
-
     }
 }

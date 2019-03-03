@@ -33,6 +33,26 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        MainActivity.dbdata.add("reimab14");
+        MainActivity.dbdata.add("reimab14");
+        MainActivity.dbdata.add("db2.htl-kaindorf.at");
+        MainActivity.dbdata.add("1521");
+        MainActivity.dbdata.add("orcl");
+
+        // DATEN AUSLESEN!
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        System.out.println("ONDESTROY aufgerufen!");
+
+        // DATEN SPEICHERN!
+    }
+
+    @Override
     public void onClick(View v) {
         EditText et = findViewById(R.id.editText);
         String persNr = et.getText().toString();

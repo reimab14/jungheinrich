@@ -1,4 +1,4 @@
-#Fri Mar 01 12:26:37 CET 2019
-base.0=C\:\\Users\\Sebastian Legat\\Downloads\\jungheinrich\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out
+#Sun Mar 03 10:35:53 CET 2019
+base.0=D\:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out
 path.0=classes.dex
 renamed.0=classes.dex
