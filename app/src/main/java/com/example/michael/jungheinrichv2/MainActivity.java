@@ -33,7 +33,6 @@ import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity {
 
-    //for DA
         private ArrayAdapter<String> adapter;
         private LinkedList<String> list;
         private ListView lview;
