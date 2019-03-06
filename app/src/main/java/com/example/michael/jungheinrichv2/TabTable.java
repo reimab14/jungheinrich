@@ -99,7 +99,7 @@ public class TabTable extends Fragment {
         for (int i = 0; i < colNames.length; i++) {
             tv = new TextView(this.getContext());
             tv.setText(colNames[i]);
-            tv.setTextSize(16);
+            tv.setTextSize(25);
             tv.setGravity(Gravity.CENTER_HORIZONTAL);
             row.addView(tv, layout);
         }
@@ -112,7 +112,7 @@ public class TabTable extends Fragment {
             for (int i = 0; i < list.size(); i++) {
                 tv = new TextView(this.getContext());
                 tv.setText(list.get(i));
-                tv.setTextSize(12);
+                tv.setTextSize(20);
                 tv.setGravity(Gravity.CENTER_HORIZONTAL);
                 row.addView(tv, layout);
             }

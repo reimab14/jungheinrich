@@ -139,6 +139,12 @@ public class SQLParser
         return filters;
     }
 
+    public void outputStatement(String statement)
+    {
+        System.out.println("\nStatement: " );
+        System.out.println(statement);
+    }
+
     public static void main(String [] args)
     {
 

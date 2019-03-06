@@ -1,5 +1,6 @@
 package com.example.michael.jungheinrichv2;
 
+import android.app.LauncherActivity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,7 +10,19 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.support.design.widget.TabLayout;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -23,6 +36,16 @@ public class TabActivity extends AppCompatActivity {
     private String[] colNames;
     private LinkedList<ArrayList<String>> content;
     private ArrayList<Integer> numbers;
+    private boolean unconfirmed = true;
+
+    LinkedList<String> filter;
+    LinkedList<TextView> textViews;
+    //LinkedList<EditText> editTexts;
+
+
+
+
+    private SQLParser parser;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -41,7 +64,23 @@ public class TabActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tab);
+
+        //get data from DB
+        Bundle b = getIntent().getExtras();
+        String item = b.getString("Report");
+
+
+        client = new TableClient();
+        content = new LinkedList<>();
+        client.setReport(item);
+        client.receiveStatement();
+        String statement = client.getStatement();
+        parser = new SQLParser(statement);
+        textViews = new LinkedList<>();
+
+
+            setContentView(R.layout.activity_tab);
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -54,14 +93,22 @@ public class TabActivity extends AppCompatActivity {
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
 
-        //get data from DB
-        Bundle b = getIntent().getExtras();
-        String item = b.getString("Report");
 
-        client = new TableClient();
-        content = new LinkedList<>();
-        client.setReport(item);
-        client.receiveStatement();
+
+
+        //editTexts = new LinkedList<>();
+
+
+
+
+
+
+
+        //
+
+
+
+        //
         client.run();
         colNames = client.getColNames().split(";");
         content = client.getList();
@@ -109,6 +156,8 @@ public class TabActivity extends AppCompatActivity {
         logo.setX(offset);
     }
 
+
+
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
@@ -125,9 +174,12 @@ public class TabActivity extends AppCompatActivity {
             switch (position)
             {
                 case 0:
-                    fragment = new TabTable();
+                    fragment = new TabFilter();
                     break;
                 case 1:
+                    fragment = new TabTable();
+                    break;
+                case 2:
                     fragment = new ChartSwitch();
                     break;
             }

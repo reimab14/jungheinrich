@@ -64,7 +64,12 @@ public class MainActivity extends AppCompatActivity {
         if(persNr.equals(""))
         {
             Bundle b = getIntent().getExtras();
-            persNr = b.getString("PersNr");
+            try {
+                persNr = b.getString("PersNr");
+            }catch(Exception ex)
+            {
+                System.out.println(ex.getMessage());
+            }
         }
         System.out.println(persNr);
 

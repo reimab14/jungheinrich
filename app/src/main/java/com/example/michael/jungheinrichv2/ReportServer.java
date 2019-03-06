@@ -113,6 +113,9 @@ public class ReportServer {
                 System.out.println(s);
                 if(s.contains("report")) {
                     System.out.println("s equals report");
+                    ///////////////////////////////////////////////////////////////
+                    //*****beschreibung zu bezeichnung ändern nd vergessen*******//
+                    ///////////////////////////////////////////////////////////////
                     data = access.ExecuteReport("beschreibung", s.split(";")[1]);
                     OutputStream os = socket.getOutputStream();
                     ObjectOutputStream out = new ObjectOutputStream(os);

@@ -992,6 +992,7 @@ id textView3
 id textView4
 id textView5
 id textView6
+id textView7
 id text_input_password_toggle
 id textinput_counter
 id textinput_error
@@ -1055,12 +1056,14 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_barchart
+layout activity_filter
 layout activity_konfig
 layout activity_login2
 layout activity_main
 layout activity_piechart
 layout activity_tab
 layout activity_table
+layout customlayout
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar
