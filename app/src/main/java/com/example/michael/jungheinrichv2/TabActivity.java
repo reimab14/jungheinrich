@@ -1,6 +1,7 @@
 package com.example.michael.jungheinrichv2;
 
 import android.app.LauncherActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -77,6 +78,14 @@ public class TabActivity extends AppCompatActivity {
         String statement = client.getStatement();
         parser = new SQLParser(statement);
         textViews = new LinkedList<>();
+
+        if(parser.parseStatement())
+        {
+            Intent intent = new Intent(TabActivity.this, FilterActivity.class);
+
+            intent.putExtra("Statement", statement);
+            startActivity(intent);
+        }
 
 
             setContentView(R.layout.activity_tab);
@@ -174,14 +183,13 @@ public class TabActivity extends AppCompatActivity {
             switch (position)
             {
                 case 0:
-                    fragment = new TabFilter();
-                    break;
-                case 1:
                     fragment = new TabTable();
                     break;
-                case 2:
+                case 1:
                     fragment = new ChartSwitch();
                     break;
+
+
             }
             Bundle b = new Bundle();
             b.putCharSequenceArray("ColNames", colNames);
