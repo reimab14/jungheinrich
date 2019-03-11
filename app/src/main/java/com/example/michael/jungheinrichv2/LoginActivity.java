@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,12 +16,14 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.security.AlgorithmParameters;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 
 import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
@@ -58,36 +61,37 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         System.out.println("ONDESTROY aufgerufen!");
 
         saveData();
+
     }
 
     public void saveData() {
         try {
 
             FileOutputStream fOut = openFileOutput("savedata", Context.MODE_PRIVATE);
-            for (String s : MainActivity.dbdata) {
-                fOut.write(s.getBytes());
-                System.out.println(s+";");
-
-            }
-
-            byte[] key = ("secretkey").getBytes("UTF-8");
-            MessageDigest sha = MessageDigest.getInstance("SHA-256");
-            key = sha.digest(key);
-            key = Arrays.copyOf(key, 16);
-            SecretKeySpec secret = new SecretKeySpec(key, "AES");
-
+            //System.out.println(MainActivity.dbdata.get(0));
+            String ergebnis = "";
             for (int i = 0; i<MainActivity.dbdata.size(); i++) {
-               if (i==1) {
-                   Cipher cipher = null;
-                   cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-                   cipher.init(Cipher.ENCRYPT_MODE, secret);
-                   byte[] cipherText = cipher.doFinal(MainActivity.dbdata.get(1).getBytes("UTF-8"));
-                   fOut.write(MainActivity.dbdata.get(i).getBytes());
-               }
-               else {
-                   fOut.write(MainActivity.dbdata.get(i).getBytes());
-               }
+                if (i == 1) {
+                    String encrypted = "";
+                    String sourceStr = MainActivity.dbdata.get(i);
+                    try {
+                        encrypted = AESUtils.encrypt(sourceStr);
+                        System.out.println("Verschlüsselt: " + encrypted);
+                        encrypted+=";";
+                        ergebnis += encrypted;
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                else {
+                    String s = MainActivity.dbdata.get(i)+";";
+                    ergebnis += s;
+                }
+
             }
+            System.out.println(ergebnis);
+            fOut.write(ergebnis.getBytes());
             fOut.close();
             System.out.println("Daten wurden gespeichert");
         } catch (Exception e) {
@@ -102,14 +106,43 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             FileInputStream fileInputStream = openFileInput("savedata");
             BufferedReader reader = new BufferedReader(new InputStreamReader(fileInputStream));
 
-            StringBuffer sb = new StringBuffer();
-            String line = reader.readLine();
 
-            while (line != null) {
-                sb.append(line);
-                line = reader.readLine();
+            int i;
+            String s_temp="";
+            while( (i = fileInputStream.read()) != -1) {
+                s_temp = s_temp + Character.toString((char)i);
             }
-            System.out.println(sb.toString());
+            System.out.println("Neu: "+s_temp);
+
+            String[] line = s_temp.split(";");
+
+            int size = MainActivity.dbdata.size();
+            MainActivity.dbdata.clear();
+
+            for (int f = 0; f<size; f++) {
+
+                MainActivity.dbdata.add(f, line[f]);
+
+            }
+
+
+
+
+            String encrypted = line[1];
+            System.out.println("encrypted: "+encrypted);
+            String decrypted = "";
+            try {
+                decrypted = AESUtils.decrypt(encrypted);
+                System.out.println("decrypted:" +decrypted);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            MainActivity.dbdata.set(1, decrypted);
+
+            for (String s : MainActivity.dbdata) {
+                System.out.println(s);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
