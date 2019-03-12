@@ -13,13 +13,9 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Michael
- */
 public class ReportClient extends Thread {
 
-    private String ip_address = "10.0.0.14";
+    private String ip_address = "192.168.1.103";
     private ObjectInputStream in;
     private ObjectOutputStream out;
 
@@ -50,13 +46,10 @@ public class ReportClient extends Thread {
     }
 
     public ReportClient() {
-
     }
 
     @Override
     public synchronized void run() {
-
-
 
     list = new LinkedList<>();
         Socket socket;
@@ -129,7 +122,6 @@ public class ReportClient extends Thread {
                 output += s + " ";
             }
             System.out.println(output);
-
         }
     }
 }

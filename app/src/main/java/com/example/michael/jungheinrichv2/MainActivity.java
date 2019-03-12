@@ -1,6 +1,7 @@
 package com.example.michael.jungheinrichv2;
 
 import android.app.LauncherActivity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -23,6 +24,12 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -212,6 +219,9 @@ public class MainActivity extends AppCompatActivity {
             }
             adapter.notifyDataSetChanged();
     }
+
+
+
 
 
 }

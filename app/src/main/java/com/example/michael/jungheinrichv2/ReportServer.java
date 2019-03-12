@@ -244,7 +244,7 @@ public class ReportServer {
         public String ExecuteSQL(String sql)
         {
             String data = "";
-
+            colNames = "";
 
             try {
                 Class.forName(db_driver);

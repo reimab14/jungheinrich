@@ -8,7 +8,7 @@ import java.io.OutputStream;
 import java.net.Socket;
 
 public class KonfigClient extends Thread {
-    private String ip_address = "10.0.0.14";
+    private String ip_address = "192.168.1.103";
     private ObjectInputStream in;
     private ObjectOutputStream out;
 
