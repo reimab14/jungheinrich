@@ -95,6 +95,12 @@ public class TabActivity extends AppCompatActivity {
             {
                 System.out.println(content.get(0).get(numbers.get(a)).toString()+": "+colNames[numbers.get(a)].toString());
             }
+
+            if(numbers.size()==0)
+            {
+                System.out.println("keine Zahl enthalten!");
+                tabLayout.removeTabAt(1);
+            }
         }
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));

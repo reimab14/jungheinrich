@@ -3,9 +3,11 @@ package com.example.michael.jungheinrichv2;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -15,6 +17,10 @@ public class KonfigActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_konfig);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarkonfig);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         EditText benutzer = findViewById(R.id.editBenutzer);
         EditText passwort = findViewById(R.id.editPasswort);
         EditText hostname = findViewById(R.id.editHostname);
@@ -27,6 +33,14 @@ public class KonfigActivity extends AppCompatActivity implements View.OnClickLis
         sid.setText(MainActivity.dbdata.get(4));
         Button bt = findViewById(R.id.button);
         bt.setOnClickListener(this);
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarkonfig);
+        ImageView logo = (ImageView) findViewById(R.id.logoJungheinrich);
+        int offset = (toolbar.getWidth() / 2) - (logo.getWidth() / 2);
+        logo.setX(offset);
     }
 
     @Override

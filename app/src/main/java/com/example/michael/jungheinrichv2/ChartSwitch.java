@@ -56,6 +56,7 @@ public class ChartSwitch  extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_main, menu);
+        inflater.inflate(R.menu.menu_refresh, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -79,6 +80,10 @@ public class ChartSwitch  extends Fragment {
             Toast.makeText(getActivity(),"Kreis", Toast.LENGTH_LONG).show();
             fragment = new TabPieChart();
             fragment.setArguments(getArguments());
+        }
+
+        else if(id == R.id.refresh) {
+            //TODO FOR YOU
         }
 
         else {
