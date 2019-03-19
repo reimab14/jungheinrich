@@ -1,6 +1,7 @@
 package com.example.michael.jungheinrichv2;
 
 import android.app.LauncherActivity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -21,8 +22,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -176,9 +184,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         if(id == android.R.id.home)
         {
-            persNr = "";
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity(intent);
+            logout();
         }
         else if(id == R.id.configuration)
         {
@@ -186,6 +192,13 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void logout()
+    {
+        persNr = "";
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -199,13 +212,28 @@ public class MainActivity extends AppCompatActivity {
     public void initList() {
             client.run();
             list = client.getList();
-            items = new String[list.size()];
-            for(int i=0; i<list.size(); i++)
+            TextView error = findViewById(R.id.Errortext);
+            if(list.get(0).equals("Exception"))
             {
-                items[i] = list.get(i);
+                if(list.get(1).equals("nodata"))
+                {
+                    logout();
+                }
+                else {
+                    error.setVisibility(View.VISIBLE);
+                    error.setText(list.get(1));
+                    EditText et = findViewById(R.id.searchtxt);
+                    et.setVisibility(View.INVISIBLE);
+                }
             }
-            adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, list);
-            lview.setAdapter(adapter);
+            else {
+                items = new String[list.size()];
+                for (int i = 0; i < list.size(); i++) {
+                    items[i] = list.get(i);
+                }
+                adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, list);
+                lview.setAdapter(adapter);
+            }
     }
 
     public void search(String searchtxt) {
@@ -217,6 +245,9 @@ public class MainActivity extends AppCompatActivity {
             }
             adapter.notifyDataSetChanged();
     }
+
+
+
 
 
 }

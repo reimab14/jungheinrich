@@ -3,18 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="56dp"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp">
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarlogin"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_weight="1"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="@string/app_name">
+
+            <ImageView
+                android:id="@+id/logoJungheinrich"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@drawable/jungheinrich" />
+
+        </android.support.v7.widget.Toolbar>
 
         <TextView
             android:id="@+id/textView"
@@ -22,7 +36,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Personalnummer eingeben"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:paddingTop="120dp"/>
 
         <EditText
             android:id="@+id/editText"
@@ -37,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:text="Login"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="161dp" />

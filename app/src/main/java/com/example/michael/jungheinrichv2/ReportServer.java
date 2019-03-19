@@ -1,7 +1,15 @@
 package com.example.michael.jungheinrichv2;
 
+import android.content.Context;
+import android.widget.Toast;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
@@ -14,6 +22,10 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 
 /**
  *
@@ -132,6 +144,33 @@ public class ReportServer {
                     System.out.println(benutzer+";"+passwort+";"+hostname+";"+port+";"+sid);
                     access = new DBAccess(benutzer, passwort, hostname, port, sid);
                 }
+                else if(s.contains("checkPersNr"))
+                {
+                    System.out.println("check Personalnummer");
+                    boolean check = access.checkPersNr(s.split(";")[1]);
+                    OutputStream os = socket.getOutputStream();
+                    ObjectOutputStream out = new ObjectOutputStream(os);
+                    if(check)
+                    {
+                        out.writeObject("ok");
+                    }
+                    else out.writeObject("ungültig");
+                }
+                else if(s.equals("savedata"))
+                {
+                    System.out.println("save data");
+                    access.saveData();
+                    socket.close();
+                }
+                else if(s.equals("loaddata"))
+                {
+                    System.out.println("load data");
+                    data = access.loadData();
+                    OutputStream os = socket.getOutputStream();
+                    ObjectOutputStream out = new ObjectOutputStream(os);
+                    out.writeObject(data);
+                    socket.close();
+                }
                 else if(s.contains("SELECT") && s.contains("FROM"))
                 {
                     System.out.println("Select abfrage");
@@ -235,11 +274,11 @@ public class ReportServer {
 
             } catch (ClassNotFoundException ex) {
                 System.out.println(ex.getMessage());
+                data = "Exception;"+ex.getMessage();
             } catch (SQLException ex) {
                 System.out.println(ex.getMessage());
+                data = "Exception;"+ex.getMessage();
             }
-
-
 
             return data;
         }
@@ -247,7 +286,7 @@ public class ReportServer {
         public String ExecuteSQL(String sql)
         {
             String data = "";
-
+            colNames = "";
 
             try {
                 Class.forName(db_driver);
@@ -274,8 +313,6 @@ public class ReportServer {
                 System.out.println(colNames);
                 while(rs.next())
                 {
-
-
                     for(int i = 1; i <= rs.getMetaData().getColumnCount(); i++)
                     {
                         //System.out.println(rs.getString(i));
@@ -289,11 +326,11 @@ public class ReportServer {
 
             } catch (ClassNotFoundException ex) {
                 System.out.println(ex.getMessage());
+                data = "Exception;"+ex.getMessage();
             } catch (SQLException ex) {
                 System.out.println(ex.getMessage());
+                data = "Exception;"+ex.getMessage();
             }
-
-
 
             return data;
         }
@@ -312,37 +349,208 @@ public class ReportServer {
                 System.out.println(""+persNr);
                 String cmd = "SELECT r."+col+" FROM report r INNER JOIN reportbenutzergruppe rbg ON r.querynr = rbg.querynr INNER JOIN personal p ON rbg.benutzergrp = p.benutzergrp " +
                         "WHERE p.persnr = "+persNr;
-                //String cmd = "SELECT "+col+" FROM report";
+
                 Statement stmt = con.createStatement();
                 ResultSet rs = stmt.executeQuery(cmd);
                 ResultSetMetaData meta = rs.getMetaData();
-
 
                 while(rs.next())
                 {
                     data += rs.getString(col)+";";
                     System.out.println(rs.getString(col));
-
                 }
 
                 con.close();
 
             } catch (ClassNotFoundException ex) {
                 System.out.println(ex.getMessage());
+                data = "Exception;"+ex.getMessage();
             } catch (SQLException ex) {
                 System.out.println(ex.getMessage());
+                data = "Exception;"+ex.getMessage();
             }
-
-            //System.out.println("Daten am Server: ");
-            //for(String s : data.split(";"))
-            //{
-            //    System.out.println(s);
-            //}
+            if(data==""){
+                data = "Exception;nodata";
+            }
             System.out.println("\n\n");
-
-
-
             return data;
+        }
+
+        public Boolean checkPersNr(String PersNr)
+        {
+            boolean check = false;
+
+            try {
+                Class.forName(db_driver);
+
+                con = DriverManager.getConnection(db_url, db_username, db_password);
+                System.out.println(PersNr);
+                String cmd = "SELECT r.beschreibung FROM report r INNER JOIN reportbenutzergruppe rbg ON r.querynr = rbg.querynr INNER JOIN personal p ON rbg.benutzergrp = p.benutzergrp " +
+                        "WHERE p.persnr = "+PersNr;
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery(cmd);
+
+                if(rs.next())
+                {
+                    check = true;
+                }
+
+                con.close();
+
+            } catch (ClassNotFoundException ex) {
+                System.out.println(ex.getMessage());
+                check=true;
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+                check=true;
+            }
+            return check;
+        }
+
+        public void saveData() {
+            AESUtils util = new AESUtils();
+            try {
+                File file = new File("D:/Jungheinrich/Jungheinrich/Jungheinrichv2/app/src/main/res/konfigdata.txt");
+                OutputStream out = new FileOutputStream(file);
+                String ergebnis = db_username+";";
+
+                String encrypted = "";
+                String sourceStr = db_password;
+                try {
+                    encrypted = util.encrypt(sourceStr);
+                    System.out.println("Verschlüsselt: " + encrypted);
+                    encrypted+=";";
+                    ergebnis += encrypted;
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                ergebnis += db_hostname+";"+db_port+";"+db_sid;
+
+                System.out.println(ergebnis);
+                out.write(ergebnis.getBytes());
+                out.close();
+                System.out.println("Daten wurden gespeichert");
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        public String loadData() {
+            String daten = "";
+            AESUtils util = new AESUtils();
+            try {
+                System.out.println("Loaddata aufgerufen");
+                File file = new File("D:/Jungheinrich/Jungheinrich/Jungheinrichv2/app/src/main/res/konfigdata.txt");
+                InputStream in = new FileInputStream(file);
+                //FileInputStream fileInputStream = openFileInput("savedata");
+                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+
+                daten = reader.readLine();
+
+                System.out.println(daten);
+
+                String[] line = daten.split(";");
+
+                String encrypted = line[1];
+                System.out.println("encrypted: "+encrypted);
+                String decrypted = "";
+                try {
+                    decrypted = util.decrypt(encrypted);
+                    System.out.println("decrypted:" +decrypted);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                db_username = line[0];
+                db_password = decrypted;
+                db_hostname = line[2];
+                db_port = line[3];
+                db_sid = line[4];
+
+                daten = db_username+";"+db_password+";"+db_hostname+";"+db_port+";"+db_sid;
+                System.out.println(daten);
+
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                daten = db_username+";"+db_password+";"+db_hostname+";"+db_port+";"+db_sid;
+            }
+            db_url = "jdbc:oracle:thin:@"+db_hostname+":"+db_port+":"+db_sid;
+            return daten;
+        }
+    }
+
+    class AESUtils
+    {
+
+        private final byte[] keyValue =
+                new byte[]{'c', 'o', 'd', 'i', 'n', 'g', 'a', 'f', 'f', 'a', 'i', 'r', 's', 'c', 'o', 'm'};
+
+        public AESUtils()
+        {
+        }
+
+        public String encrypt(String cleartext)
+                throws Exception {
+            byte[] rawKey = getRawKey();
+            byte[] result = encrypt(rawKey, cleartext.getBytes());
+            return toHex(result);
+        }
+
+        public String decrypt(String encrypted)
+                throws Exception {
+
+            byte[] enc = toByte(encrypted);
+            byte[] result = decrypt(enc);
+            return new String(result);
+        }
+
+        private byte[] getRawKey() throws Exception {
+            SecretKey key = new SecretKeySpec(keyValue, "AES");
+            byte[] raw = key.getEncoded();
+            return raw;
+        }
+
+        private byte[] encrypt(byte[] raw, byte[] clear) throws Exception {
+            SecretKey skeySpec = new SecretKeySpec(raw, "AES");
+            Cipher cipher = Cipher.getInstance("AES");
+            cipher.init(Cipher.ENCRYPT_MODE, skeySpec);
+            byte[] encrypted = cipher.doFinal(clear);
+            return encrypted;
+        }
+
+        private byte[] decrypt(byte[] encrypted)
+                throws Exception {
+            SecretKey skeySpec = new SecretKeySpec(keyValue, "AES");
+            Cipher cipher = Cipher.getInstance("AES");
+            cipher.init(Cipher.DECRYPT_MODE, skeySpec);
+            byte[] decrypted = cipher.doFinal(encrypted);
+            return decrypted;
+        }
+
+        public byte[] toByte(String hexString) {
+            int len = hexString.length() / 2;
+            byte[] result = new byte[len];
+            for (int i = 0; i < len; i++)
+                result[i] = Integer.valueOf(hexString.substring(2 * i, 2 * i + 2),
+                        16).byteValue();
+            return result;
+        }
+
+        public String toHex(byte[] buf) {
+            if (buf == null)
+                return "";
+            StringBuffer result = new StringBuffer(2 * buf.length);
+            for (int i = 0; i < buf.length; i++) {
+                appendHex(result, buf[i]);
+            }
+            return result.toString();
+        }
+
+        private final static String HEX = "0123456789ABCDEF";
+
+        private void appendHex(StringBuffer sb, byte b) {
+            sb.append(HEX.charAt((b >> 4) & 0x0f)).append(HEX.charAt(b & 0x0f));
         }
     }
 }

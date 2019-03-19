@@ -2,12 +2,15 @@ package com.example.michael.jungheinrichv2;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -29,12 +32,18 @@ import javax.crypto.spec.SecretKeySpec;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ArrayList<String> IDs;
+    private LoginClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        setContentView(R.layout.activity_login2);
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_login2);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarlogin);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         Button bt;
 
         bt = findViewById(R.id.button1);
@@ -44,24 +53,45 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        MainActivity.dbdata.add("reimab14");
-        MainActivity.dbdata.add("reimab14");
-        MainActivity.dbdata.add("db2.htl-kaindorf.at");
-        MainActivity.dbdata.add("1521");
-        MainActivity.dbdata.add("orcl");
+    public void onWindowFocusChanged(boolean hasFocus) {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarlogin);
+        ImageView logo = (ImageView) findViewById(R.id.logoJungheinrich);
+        int offset = (toolbar.getWidth() / 2) - (logo.getWidth() / 2);
+        logo.setX(offset);
+    }
 
-        loadData();
+    @Override
+    protected void onStart() {
+        //loginClient.setAnfrage("loaddata");
+        System.out.println("ONSTART aufgerufen!");
+        client = new LoginClient();
+        if(MainActivity.dbdata.size()==0)
+        {
+            client.setAnfrage("loaddata");
+            client.run();
+            String data = client.getResult();
+            String[] result = data.split(";");
+            for(int i=0; i<result.length; i++)
+            {
+                MainActivity.dbdata.add(result[i]);
+            }
+
+            for (String s : MainActivity.dbdata) {
+                System.out.println(s);
+            }
+        }
+        //loginClient.run();
+        //loadData();
+        super.onStart();
     }
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
+        client.setAnfrage("savedata");
         System.out.println("ONDESTROY aufgerufen!");
-
-        saveData();
-
+        client.run();
+        //saveData();
+        super.onDestroy();
     }
 
     public void saveData() {
@@ -101,32 +131,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     public void loadData() {
+        String daten = "";
         try {
             System.out.println("Loaddata aufgerufen");
             FileInputStream fileInputStream = openFileInput("savedata");
             BufferedReader reader = new BufferedReader(new InputStreamReader(fileInputStream));
 
+            daten = reader.readLine();
+            System.out.println(daten);
 
-            int i;
-            String s_temp="";
-            while( (i = fileInputStream.read()) != -1) {
-                s_temp = s_temp + Character.toString((char)i);
+            String[] line = daten.split(";");
+
+            for (int f = 0; f<line.length; f++) {
+                MainActivity.dbdata.add(line[f]);
             }
-            System.out.println("Neu: "+s_temp);
-
-            String[] line = s_temp.split(";");
-
-            int size = MainActivity.dbdata.size();
-            MainActivity.dbdata.clear();
-
-            for (int f = 0; f<size; f++) {
-
-                MainActivity.dbdata.add(f, line[f]);
-
-            }
-
-
-
 
             String encrypted = line[1];
             System.out.println("encrypted: "+encrypted);
@@ -152,14 +170,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         EditText et = findViewById(R.id.editText);
         String persNr = et.getText().toString();
-
-
+        if(persNr.equals(""))
+        {
+            et.setError("Bitte eine Personalnummer eingeben!");
+        }
+        else {
+            client.setAnfrage("checkPersNr;" + persNr);
+            client.run();
+            String pruef = client.getResult();
+            System.out.println("pruef: "+pruef);
+            if (pruef.equals("ok")) {
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 Bundle b = new Bundle();
                 b.putString("PersNr", persNr);
                 intent.putExtra("PersNr", persNr);
                 startActivity(intent);
-
-
+            } else et.setError("Ungültige Personalnummer!");
+        }
     }
 }

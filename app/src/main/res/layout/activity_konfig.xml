@@ -8,25 +8,43 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="56dp"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp">
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarkonfig"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_weight="1"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="@string/app_name">
+
+            <ImageView
+                android:id="@+id/logoJungheinrich"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@drawable/jungheinrich" />
+
+        </android.support.v7.widget.Toolbar>
 
         <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Benutzer"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="40dp" />
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Benutzer"
+            android:paddingTop="60dp"
+            android:paddingLeft="20dp"
+            tools:layout_editor_absoluteX="46dp"
+            tools:layout_editor_absoluteY="40dp" />
 
         <EditText
             android:id="@+id/editBenutzer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
             android:ems="10"
             android:inputType="textPersonName"
             tools:layout_editor_absoluteX="46dp"
@@ -36,6 +54,7 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
             android:text="Passwort"
             tools:layout_editor_absoluteX="46dp"
             tools:layout_editor_absoluteY="116dp" />
@@ -44,6 +63,7 @@
             android:id="@+id/editPasswort"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
             android:ems="10"
             android:inputType="textPassword"
             tools:layout_editor_absoluteX="46dp"
@@ -53,6 +73,7 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
             android:text="Hostname"
             tools:layout_editor_absoluteX="46dp"
             tools:layout_editor_absoluteY="190dp" />
@@ -61,6 +82,7 @@
             android:id="@+id/editHostname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
             android:ems="10"
             android:inputType="textPersonName"
             tools:layout_editor_absoluteX="45dp"
@@ -70,6 +92,7 @@
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
             android:text="Port"
             tools:layout_editor_absoluteX="46dp"
             tools:layout_editor_absoluteY="268dp" />
@@ -78,6 +101,7 @@
             android:id="@+id/editPort"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
             android:ems="10"
             android:inputType="number|text"
             tools:layout_editor_absoluteX="45dp"
@@ -87,6 +111,7 @@
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
             android:text="SID"
             tools:layout_editor_absoluteX="46dp"
             tools:layout_editor_absoluteY="190dp" />
@@ -95,6 +120,7 @@
             android:id="@+id/editSID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
             android:ems="10"
             android:inputType="textPersonName"
             tools:layout_editor_absoluteX="45dp"
