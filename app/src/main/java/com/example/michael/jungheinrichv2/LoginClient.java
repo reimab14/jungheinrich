@@ -9,7 +9,7 @@ import java.net.Socket;
 import java.util.LinkedList;
 
 public class LoginClient extends Thread {
-    private String ip_address = "10.0.0.14";
+    private String ip_address = "10.96.245.145";
     private ObjectInputStream in;
     private ObjectOutputStream out;
 

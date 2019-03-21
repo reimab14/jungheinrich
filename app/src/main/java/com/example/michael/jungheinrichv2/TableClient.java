@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class TableClient  extends Thread {
     //TableClient Class
-    private String ip_address = "10.151.87.30";
+    private String ip_address = "10.96.245.145";
     private ObjectInputStream in;
     private ObjectOutputStream out;
 
@@ -27,7 +27,7 @@ public class TableClient  extends Thread {
     private static ArrayList<String> list;
     private LinkedList<ArrayList<String>> contentList;
     private static Scanner scan = new Scanner(System.in);
-    private TableContent content = new TableContent();
+   // private TableContent content = new TableContent();
 
 
     public static void main(String [] args)

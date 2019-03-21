@@ -1,5 +1,6 @@
 package com.example.michael.jungheinrichv2;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -67,7 +68,15 @@ public class TabTable extends Fragment {
         int id = item.getItemId();
         if(id==R.id.refresh)
         {
-            //TODO FOR YOU
+            TabActivity activity = (TabActivity) getActivity();
+            //activity.runClient();
+            //client.run();
+
+            Intent intent = activity.getIntent();
+            intent.putExtra("Report", activity.item);
+
+            startActivity(intent);
+            //System.out.println("Der SHit ist refreshed");
         }
         return super.onOptionsItemSelected(item);
     }

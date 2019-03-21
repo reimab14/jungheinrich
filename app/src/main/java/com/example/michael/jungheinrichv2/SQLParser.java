@@ -10,15 +10,18 @@ public class SQLParser
     private int count;
     private LinkedList<String> krits;
     private LinkedList<String> appKrits;
+    private LinkedList<String> allFilters;
 
     public SQLParser(String stmt)
     {
         this.statement = stmt;
         krits = new LinkedList<>();
+        allFilters = new LinkedList<>();
     }
 
     public void setAppKrits(LinkedList<String> appKrits) {
         this.appKrits = appKrits;
+
 
         SetKrits();
     }
@@ -38,9 +41,21 @@ public class SQLParser
 
         statement = replace[0];
 
-        for(int i = 1; i <= appKrits.size(); i++) {
-            String s = replace[i].replace("?",appKrits.get(i-1));
-            statement += " "+s;
+        String krit = "";
+        for(int i = 1; i <= allFilters.size(); i++) {
+
+            for(String s : appKrits)
+            {
+                if(s.split(";")[0] == allFilters.get(i-1))
+                    krit = s.split(";")[1];
+            }
+
+
+
+                String s = replace[i].replace("?",krit);
+                statement += " "+s;
+
+
         }
     }
 
@@ -116,6 +131,8 @@ public class SQLParser
             {
                 if(s[j].charAt(i) == ' ')
                 {
+                    allFilters.add(s[j].substring(0,i));
+
                     if(filters.contains(s[j].substring(0,i)))
                     {
                         break;

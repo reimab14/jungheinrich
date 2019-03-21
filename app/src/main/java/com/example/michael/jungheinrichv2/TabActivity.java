@@ -33,11 +33,13 @@ import java.util.regex.Matcher;
 
 public class TabActivity extends AppCompatActivity {
 
-    private TableClient client;
+    public static TableClient client;
     private String[] colNames;
     private LinkedList<ArrayList<String>> content;
     private ArrayList<Integer> numbers;
     private boolean unconfirmed = true;
+    public String item;
+    private String statement;
 
     LinkedList<String> filter;
     LinkedList<TextView> textViews;
@@ -68,15 +70,26 @@ public class TabActivity extends AppCompatActivity {
 
         //get data from DB
         Bundle b = getIntent().getExtras();
-        String item = b.getString("Report");
+        item = b.getString("Report");
 
 
         client = new TableClient();
         content = new LinkedList<>();
+
+        if(!(item == "" || item == null))
+        {
+
+
         client.setReport(item);
         client.receiveStatement();
-        String statement = client.getStatement();
+        statement = client.getStatement();
+        }
+        else
+        {
+            statement = b.getString("Statement");
+        }
         parser = new SQLParser(statement);
+        System.out.println(statement);
         textViews = new LinkedList<>();
 
         if(parser.parseStatement())
@@ -115,9 +128,14 @@ public class TabActivity extends AppCompatActivity {
 
         //
 
-
+        this.runClient();
 
         //
+
+    }
+
+    public void runClient()
+    {
         client.run();
         colNames = client.getColNames().split(";");
         content = client.getList();
@@ -158,6 +176,9 @@ public class TabActivity extends AppCompatActivity {
                 tabLayout.removeTabAt(1);
             }
         }
+
+
+
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));

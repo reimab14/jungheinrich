@@ -128,7 +128,7 @@ public class ReportServer {
                     ///////////////////////////////////////////////////////////////
                     //*****beschreibung zu bezeichnung ändern nd vergessen*******//
                     ///////////////////////////////////////////////////////////////
-                    data = access.ExecuteReport("beschreibung", s.split(";")[1]);
+                    data = access.ExecuteReport("bezeichnung", s.split(";")[1]);
                     OutputStream os = socket.getOutputStream();
                     ObjectOutputStream out = new ObjectOutputStream(os);
                     out.writeObject(data);
@@ -254,7 +254,7 @@ public class ReportServer {
                 Class.forName(db_driver);
 
                 con = DriverManager.getConnection(db_url, db_username, db_password);
-                String cmd = "SELECT "+cols+" FROM report WHERE LOWER(beschreibung) = '"+beschreibung.toLowerCase()+"'";
+                String cmd = "SELECT "+cols+" FROM report WHERE LOWER(bezeichnung) = '"+beschreibung.toLowerCase()+"'";
               //  System.out.println(cmd);
                 Statement stmt = con.createStatement();
                 ResultSet rs = stmt.executeQuery(cmd);
@@ -385,7 +385,7 @@ public class ReportServer {
 
                 con = DriverManager.getConnection(db_url, db_username, db_password);
                 System.out.println(PersNr);
-                String cmd = "SELECT r.beschreibung FROM report r INNER JOIN reportbenutzergruppe rbg ON r.querynr = rbg.querynr INNER JOIN personal p ON rbg.benutzergrp = p.benutzergrp " +
+                String cmd = "SELECT r.bezeichnung FROM report r INNER JOIN reportbenutzergruppe rbg ON r.querynr = rbg.querynr INNER JOIN personal p ON rbg.benutzergrp = p.benutzergrp " +
                         "WHERE p.persnr = "+PersNr;
                 Statement stmt = con.createStatement();
                 ResultSet rs = stmt.executeQuery(cmd);

@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 public class ReportClient extends Thread {
 
-    private String ip_address = "10.151.87.30";
+    private String ip_address = "10.96.245.145";
     private ObjectInputStream in;
     private ObjectOutputStream out;
 
