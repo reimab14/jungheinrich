@@ -194,8 +194,10 @@ public class ReportServer {
 
                 this.interrupt();
             } catch (IOException ex) {
+                System.out.println("Exception am ReportServer");
                 System.out.println(ex.getMessage());
             } catch (ClassNotFoundException ex) {
+                System.out.println("Exception am ReportServer");
                 System.out.println(ex.getMessage());
             }
 
@@ -293,8 +295,9 @@ public class ReportServer {
 
                 con = DriverManager.getConnection(db_url, db_username, db_password);
 
-                  System.out.println(sql);
+                  System.out.println("ExecuteSQL: "+sql);
                 Statement stmt = con.createStatement();
+                System.out.println("Statement Created");
                 ResultSet rs = stmt.executeQuery(sql);
                   System.out.println("Statemet abgerufen");
 

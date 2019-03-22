@@ -46,17 +46,24 @@ public class SQLParser
 
             for(String s : appKrits)
             {
-                if(s.split(";")[0] == allFilters.get(i-1))
+                System.out.println("SQLParser s:" +s);
+                System.out.println("allFilters: "+allFilters.get(i-1));
+                System.out.println("Split[0]: "+s.split(";")[0]);
+                if((s.split(";")[0]).equals(allFilters.get(i-1)) ) {
+
                     krit = s.split(";")[1];
+                    System.out.println("SQLParser Krit: " + krit);
+                }
             }
 
 
 
-                String s = replace[i].replace("?",krit);
-                statement += " "+s;
+                String s = replace[i].replace("?","'"+krit+"'");
+                statement += ""+s;
 
 
         }
+
     }
 
     public String getStatement() {

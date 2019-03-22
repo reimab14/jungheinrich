@@ -33,7 +33,7 @@ import java.util.regex.Matcher;
 
 public class TabActivity extends AppCompatActivity {
 
-    public static TableClient client;
+    public TableClient client;
     private String[] colNames;
     private LinkedList<ArrayList<String>> content;
     private ArrayList<Integer> numbers;
@@ -68,6 +68,9 @@ public class TabActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        System.out.println("TabCtivity Started");
+
+
         //get data from DB
         Bundle b = getIntent().getExtras();
         item = b.getString("Report");
@@ -78,7 +81,7 @@ public class TabActivity extends AppCompatActivity {
 
         if(!(item == "" || item == null))
         {
-
+            System.out.println("Item contains Report");
 
         client.setReport(item);
         client.receiveStatement();
@@ -87,6 +90,7 @@ public class TabActivity extends AppCompatActivity {
         else
         {
             statement = b.getString("Statement");
+            System.out.println("Item contains Statement\n"+statement);
         }
         parser = new SQLParser(statement);
         System.out.println(statement);
@@ -136,52 +140,54 @@ public class TabActivity extends AppCompatActivity {
 
     public void runClient()
     {
-        client.run();
-        colNames = client.getColNames().split(";");
-        content = client.getList();
-        numbers = new ArrayList<>();
-        System.out.println("Größe: "+content.size());
+        System.out.println("TabActivity Statement: "+statement);
 
-        // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
+        if(!statement.contains("???")) {
+            System.out.println("TabActivity in der IF");
+            //client.receiveStatement();
+            client.setStatement(statement);
+            System.out.println("Aufruf in TabActivity\nStatement in TableClient: " + client.getStatement());
+            client.run();
+            System.out.println("TabActivity Client run() ausgeführt");
+            colNames = client.getColNames().split(";");
+            content = client.getList();
+            numbers = new ArrayList<>();
+            System.out.println("Größe: " + content.size());
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        if(content.size()>1)
-        {
-            System.out.println("mehr als ein Eintrag!");
-            tabLayout.removeTabAt(1);
-        }
-        else {
-            System.out.println("Data: ");
-            for(int j=0; j<content.get(0).size(); j++)
-            {
-                System.out.println(content.get(0).get(j));
-                String search = content.get(0).get(j).toString();
-                System.out.println("Zahl: "+search.matches("-?\\d+(\\.\\d+)?"));
-                if(search.matches("-?\\d+(\\.\\d+)?")) {
-                    numbers.add(j);
+            // Set up the ViewPager with the sections adapter.
+            mViewPager = (ViewPager) findViewById(R.id.container);
+            mViewPager.setAdapter(mSectionsPagerAdapter);
+
+            TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+            if (content.size() > 1) {
+                System.out.println("mehr als ein Eintrag!");
+                tabLayout.removeTabAt(1);
+            } else {
+                System.out.println("Data: ");
+                for (int j = 0; j < content.get(0).size(); j++) {
+                    System.out.println(content.get(0).get(j));
+                    String search = content.get(0).get(j).toString();
+                    System.out.println("Zahl: " + search.matches("-?\\d+(\\.\\d+)?"));
+                    if (search.matches("-?\\d+(\\.\\d+)?")) {
+                        numbers.add(j);
+                    }
+                }
+
+                System.out.println("Spalten:");
+                for (int a = 0; a < numbers.size(); a++) {
+                    System.out.println(content.get(0).get(numbers.get(a)).toString() + ": " + colNames[numbers.get(a)].toString());
+                }
+
+                if (numbers.size() == 0) {
+                    System.out.println("keine Zahl enthalten!");
+                    tabLayout.removeTabAt(1);
                 }
             }
 
-            System.out.println("Spalten:");
-            for(int a=0; a<numbers.size(); a++)
-            {
-                System.out.println(content.get(0).get(numbers.get(a)).toString()+": "+colNames[numbers.get(a)].toString());
-            }
 
-            if(numbers.size()==0)
-            {
-                System.out.println("keine Zahl enthalten!");
-                tabLayout.removeTabAt(1);
-            }
+            mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+            tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
         }
-
-
-
-
-        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
     }
 
     @Override
