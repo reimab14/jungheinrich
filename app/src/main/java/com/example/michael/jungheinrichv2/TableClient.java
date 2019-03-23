@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class TableClient  extends Thread {
     //TableClient Class
-    private String ip_address = "10.151.82.25";
+    private String ip_address = "192.168.43.66";
     private ObjectInputStream in;
     private ObjectOutputStream out;
 
@@ -131,7 +131,7 @@ public class TableClient  extends Thread {
             list = new ArrayList<String>();
 
 
-            for(String r : data.split("_")) {
+            for(String r : data.split("§")) {
                 for (String s : r.split(";")) {
 
                    // System.out.println(s);

@@ -321,7 +321,7 @@ public class ReportServer {
                         //System.out.println(rs.getString(i));
                         data += rs.getString(i) +";";
                     }
-                    data += "_";
+                    data += "§";
                 }
                 System.out.println(data);
 

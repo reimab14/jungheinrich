@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 public class ReportClient extends Thread {
 
-    private String ip_address = "10.151.82.25";
+    private String ip_address = "192.168.43.66";
     private ObjectInputStream in;
     private ObjectOutputStream out;
 
@@ -26,7 +26,7 @@ public class ReportClient extends Thread {
     private static LinkedList<String> list;
     private LinkedList<LinkedList<String>> contentList;
     private static Scanner scan = new Scanner(System.in);
-    private TableContent content = new TableContent();
+    //private TableContent content = new TableContent();
 
 
     public static void main(String [] args)
