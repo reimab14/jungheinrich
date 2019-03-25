@@ -73,17 +73,9 @@ public class TableClient  extends Thread {
             OutputStream os = socket.getOutputStream();
             out = new ObjectOutputStream(os);
             out.writeObject(report);
-
-
             InputStream is = socket.getInputStream();
             in = new ObjectInputStream(is);
             statement = (String)in.readObject();
-
-            //System.out.println("Daten beim Client:");
-            //System.out.println("Data: "+data);
-
-
-
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         } catch (ClassNotFoundException ex) {
@@ -92,7 +84,6 @@ public class TableClient  extends Thread {
         {
             System.out.println(ex.getMessage());
         }
-        //disconnect();
         this.interrupt();
     }
 
@@ -117,27 +108,16 @@ public class TableClient  extends Thread {
             out = new ObjectOutputStream(os);
             System.out.println("TableClient Statement: "+statement);
             out.writeObject(statement);
-
-
             InputStream is = socket.getInputStream();
             in = new ObjectInputStream(is);
             String [] receive = (String[]) in.readObject();
             colNames = receive[0];
             String data = receive[1];
-
-            //System.out.println("Daten beim Client:");
-            //System.out.println("Data: "+data);
-
             list = new ArrayList<String>();
-
-
             for(String r : data.split("§")) {
                 for (String s : r.split(";")) {
-
-                   // System.out.println(s);
                     list.add(s);
                 }
-
                 contentList.add(list);
                 list = new ArrayList<>();
             }

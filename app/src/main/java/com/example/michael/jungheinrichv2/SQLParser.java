@@ -29,39 +29,25 @@ public class SQLParser
     private void SetKrits()
     {
         System.out.println(statement);
-
         wStatement = statement.replaceAll("\\?\\?\\?", "§\\?");
-
-        
-
         String[] replace = wStatement.split("§");
-
         count = replace.length;
         System.out.println(count);
-
         statement = replace[0];
-
         String krit = "";
         for(int i = 1; i <= allFilters.size(); i++) {
-
             for(String s : appKrits)
             {
                 System.out.println("SQLParser s:" +s);
                 System.out.println("allFilters: "+allFilters.get(i-1));
                 System.out.println("Split[0]: "+s.split(";")[0]);
                 if((s.split(";")[0]).equals(allFilters.get(i-1)) ) {
-
                     krit = s.split(";")[1];
                     System.out.println("SQLParser Krit: " + krit);
                 }
             }
-
-
-
                 String s = replace[i].replace("?","'"+krit+"'");
                 statement += ""+s;
-
-
         }
 
     }
@@ -81,41 +67,11 @@ public class SQLParser
 
     public boolean parseStatement()
     {
-
-
         if(statement.contains("???"))
             {
-
                 wStatement = statement.replace("???", "?");
-
                 String[] replace = wStatement.split("\\?");
-
                 count = replace.length;
-
-
-
-             /*   for(int i = 1; i < count; i++)
-                {
-                    String s = replace[i];
-
-                    char[] labelname =  s.toCharArray();
-
-                    int index = 0;
-                    for(int j = 6; i < s.length(); j++)
-                    {
-                        if(labelname[j] == ' ')
-                        {
-                            index = j;
-                            break;
-                        }
-                    }
-
-                    String krit = s.substring(6,index);
-                krits.add(krit);
-                System.out.println(krit);
-            }*/
-
-
            return true;
         }
         else {
@@ -126,12 +82,8 @@ public class SQLParser
     public LinkedList<String> getFilters(String statement)
     {
         LinkedList<String> filters = new LinkedList<>();
-
         statement  = statement.replace("/* U ", "§");
         String[] s = statement.split("§");
-
-        int index = 1;
-
         for(int j = 1; j < s.length; j++)
         {
             for(int i = 0; i < s[j].length(); i++)

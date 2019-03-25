@@ -54,25 +54,17 @@ public class ReportClient extends Thread {
     list = new LinkedList<>();
         Socket socket;
         try {
-            //socket = new Socket("0.0.0.0",PORTNR);
-            //System.out.println(socket.getInetAddress());
-            //10.0.2.2
             socket = new Socket(ip_address, PORTNR);
             System.out.println(socket.getInetAddress());
-
             OutputStream os = socket.getOutputStream();
             out = new ObjectOutputStream(os);
             out.writeObject(table+";"+MainActivity.persNr);
-
             InputStream is = socket.getInputStream();
             in = new ObjectInputStream(is);
             String data = (String)in.readObject();
 
-            //System.out.println("Daten beim Client:");
-            //System.out.println("Data: "+data);
             for(String s : data.split(";"))
             {
-                //System.out.println("aus Data: "+s);
                 addToList(s);
             }
 

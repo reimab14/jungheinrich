@@ -55,22 +55,17 @@ public class ReportServer {
     {
         public ServerThread()
         {
-            //while (!isInterrupted()) {
+
             System.out.println("Im Serverthread");
                 try {
-                    //byte[] addr = {10,0,2,15};
-                    //server = new ServerSocket(port, 0, InetAddress.getByName("192.168.8.102"));
-
                     server = new ServerSocket(port);
-
-
                     System.out.println(server.getInetAddress());
                     server.setSoTimeout(100000);
                     System.out.println("Server started on Port " + port);
                 } catch (IOException ex) {
                     System.out.println(ex.getMessage());
                 }
-            //}
+
         }
 
 
@@ -125,9 +120,6 @@ public class ReportServer {
                 System.out.println(s);
                 if(s.contains("report")) {
                     System.out.println("s equals report");
-                    ///////////////////////////////////////////////////////////////
-                    //*****beschreibung zu bezeichnung ändern nd vergessen*******//
-                    ///////////////////////////////////////////////////////////////
                     data = access.ExecuteReport("bezeichnung", s.split(";")[1]);
                     OutputStream os = socket.getOutputStream();
                     ObjectOutputStream out = new ObjectOutputStream(os);
@@ -289,21 +281,12 @@ public class ReportServer {
         {
             String data = "";
             colNames = "";
-
             try {
                 Class.forName(db_driver);
-
                 con = DriverManager.getConnection(db_url, db_username, db_password);
-
-                  System.out.println("ExecuteSQL: "+sql);
+                System.out.println("ExecuteSQL: "+sql);
                 Statement stmt = con.createStatement();
-                System.out.println("Statement Created");
                 ResultSet rs = stmt.executeQuery(sql);
-                  System.out.println("Statemet abgerufen");
-
-                //  System.out.println("Statement: "+cmd);
-
-                //  System.out.println("Neues resultset geladen "+rs.toString());
                 ResultSetMetaData metaData = rs.getMetaData();
 
                 for(int i = 1; i <= metaData.getColumnCount(); i++)
@@ -318,7 +301,6 @@ public class ReportServer {
                 {
                     for(int i = 1; i <= rs.getMetaData().getColumnCount(); i++)
                     {
-                        //System.out.println(rs.getString(i));
                         data += rs.getString(i) +";";
                     }
                     data += "§";
