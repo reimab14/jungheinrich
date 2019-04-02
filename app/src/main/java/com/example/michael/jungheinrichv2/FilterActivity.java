@@ -34,18 +34,10 @@ import static android.icu.lang.UCharacter.toUpperCase;
 public class FilterActivity extends AppCompatActivity
 {
     private String statement;
-  //  private TableClient client;
     private SQLParser parser;
-    private ListView lvtext;
-    private ListView lvinput;
     private LinkedList<String> filter;
-    //private CustomAdapter adapter;
     private LinkedList<String> krits;
     private Button confirm;
-    private ArrayAdapter<TextView> adaptertext;
-    private ArrayAdapter<EditText> adapterinput;
-    private LinkedList<TextView> textlist;
-    private LinkedList<EditText> inputlist;
     private TableLayout tableFilter;
 
 
@@ -60,23 +52,11 @@ public class FilterActivity extends AppCompatActivity
         statement =  b.getString("Statement");
         System.out.println("Aktuelles Statement: "+statement);
         krits = new LinkedList<>();
-       // lvtext = findViewById(R.id.listviewtext);
-       // lvinput = findViewById(R.id.listviewinput);
-       // textlist = new LinkedList<TextView>();
-       // inputlist = new LinkedList<EditText>();
         parser = new SQLParser(statement);
-        //adapter = new CustomAdapter(filter);
         filter = parser.getFilters(statement);
         TableRow.LayoutParams layout = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,TableRow.LayoutParams.MATCH_PARENT);
         tableFilter = findViewById(R.id.filterTable);
         System.out.println("Filterlänge: "+filter.size());
-       // System.out.println("Adapter: "+adapter);
-
-       // double width = getWindowManager().getDefaultDisplay().getWidth()/2;
-
-
-        //CustomLayout layout;
-
         TextView tview;
         EditText edtext;
         TableRow row = new TableRow(this.getBaseContext());
@@ -85,39 +65,20 @@ public class FilterActivity extends AppCompatActivity
             tview = new TextView(this.getBaseContext());
             tview.setText(filter.get(i));
             tview.setTextSize(20);
+            tview.setWidth(getWindowManager().getDefaultDisplay().getWidth());
             row.addView(tview);
 
             edtext = new EditText(this.getBaseContext());
             edtext.setTextSize(20);
+            edtext.setWidth(getWindowManager().getDefaultDisplay().getWidth());
             row.addView(edtext);
 
-            //layout = new CustomLayout(this);
-            //layout.setFilter(filter.get(i));
             tableFilter.addView(row);
             row = new TableRow(this.getBaseContext());
         }
-
-        //adaptertext = new ArrayAdapter<TextView>(this, android.R.layout.simple_list_item_1, android.R.id.text1, textlist);
-        //adapterinput = new ArrayAdapter<EditText>(this, android.R.layout.simple_list_item_1, android.R.id.text1, inputlist);
-
-
-
-
-
-
-
-
-
-
-
-
-
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
                 for (int i = 0; i < filter.size(); i++)
                 {
                     TableRow row = (TableRow) tableFilter.getChildAt(i);
@@ -126,14 +87,13 @@ public class FilterActivity extends AppCompatActivity
                     String krit = ""+tv.getText()+";"+et.getText();
                     krit = krit.toUpperCase();
                     System.out.println("Krit: "+krit);
-
                    krits.add(krit);
                 }
 
                 boolean confirmed = true;
                 for (int i = 0; i < krits.size(); i++)
                 {
-                    if(krits.get(i) == "" || krits.get(i) == null)
+                    if(krits.get(i).split(";")[1] == "" || krits.get(i).split(";")[1] == null)
                     {
 
                         confirmed = false;

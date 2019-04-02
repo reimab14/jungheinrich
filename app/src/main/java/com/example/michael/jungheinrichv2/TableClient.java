@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class TableClient  extends Thread {
     //TableClient Class
-    private String ip_address = "192.168.43.66";
+    private String ip_address = "10.96.245.145";
     private ObjectInputStream in;
     private ObjectOutputStream out;
 

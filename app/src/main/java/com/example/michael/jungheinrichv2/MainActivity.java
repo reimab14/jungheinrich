@@ -126,14 +126,13 @@ public class MainActivity extends AppCompatActivity {
 
 
             try {
-                //   access = new DBAccess();
-                //    list = access.getTables();
                 initList();
-
             } catch (Exception ex) {
+
+
+
                 for (int i = 1; i <= 20; i++) {
                     list.add(("TestItem" + i));
-
                 }
 
                 Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT);
@@ -149,8 +148,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
         try {
-
-            //lview.setAdapter(adapter);
             adapter.notifyDataSetChanged();
         }catch(Exception ex)
         {
