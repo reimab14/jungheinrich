@@ -74,6 +74,7 @@ public class TabBarChart  extends Fragment {
         colors.add(Color.GREEN);
         colors.add(Color.CYAN);
         colors.add(Color.YELLOW);
+        colors.add(Color.MAGENTA);
 
         barDataSet.setColors(colors);
 
@@ -104,6 +105,7 @@ public class TabBarChart  extends Fragment {
         legend.setPosition(Legend.LegendPosition.BELOW_CHART_CENTER);
         legend.setCustom(legendEntries);
 
+        barDataSet.setValueTextSize(12);
         BarData theData = new BarData(barDataSet);
         barChart.setData(theData);
 

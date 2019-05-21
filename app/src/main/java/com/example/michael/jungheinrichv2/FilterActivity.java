@@ -63,14 +63,15 @@ public class FilterActivity extends AppCompatActivity
         for(int i = 0; i < filter.size(); i++)
         {
             tview = new TextView(this.getBaseContext());
-            tview.setText(filter.get(i));
+            tview.setText(filter.get(i)+":");
             tview.setTextSize(20);
-            tview.setWidth(getWindowManager().getDefaultDisplay().getWidth());
+            tview.setWidth((getWindowManager().getDefaultDisplay().getWidth())/2);
+            tview.setPadding(220,0,0,0);
             row.addView(tview);
 
             edtext = new EditText(this.getBaseContext());
             edtext.setTextSize(20);
-            edtext.setWidth(getWindowManager().getDefaultDisplay().getWidth());
+            edtext.setWidth((getWindowManager().getDefaultDisplay().getWidth())/2);
             row.addView(edtext);
 
             tableFilter.addView(row);

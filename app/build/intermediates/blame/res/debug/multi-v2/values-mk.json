@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Michael\\Documents\\4BHIF\\SYP\\Projekt\\jungheinrich\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-mk\\values-mk.xml",
+            "outputFile": "D:\\Jungheinrich\\Jungheinrich\\Jungheinrichv2\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-mk\\values-mk.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Michael\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\1f62945bf934b6c8d1f28b7efe7c8c2c\\res\\values-mk\\values-mk.xml",
+                    "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\76adca85347026775b8c636b3b67ac1c\\res\\values-mk\\values-mk.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Michael\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\ed613045e9c555cd66ce046ed7a1f791\\res\\values-mk\\values-mk.xml",
+                    "source": "C:\\Users\\Markus\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\3696dc848a9a13665376b264bad5e925\\res\\values-mk\\values-mk.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
